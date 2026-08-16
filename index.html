@@ -303,7 +303,6 @@ footer{text-align:center;padding:35px 20px 90px;color:#817583;font-size:13px;lin
 <script>
 // ================================
 // PERSONALIZED GUEST PATH
-// Examples:
 // /anh-minh  -> Anh Minh
 // /chi-lan   -> Chị Lan
 // /ban-nam   -> Bạn Nam
@@ -312,8 +311,8 @@ footer{text-align:center;padding:35px 20px 90px;color:#817583;font-size:13px;lin
 // /em-mai    -> Em Mai
 // ================================
 
-const path = decodeURIComponent(window.location.pathname)
-  .replace(/^\\/+|\\/+$/g, "");
+const cleanPath = window.location.pathname
+  .replace(/^\/+|\/+$/g, "");
 
 const pronouns = {
   anh: "Anh",
@@ -334,8 +333,15 @@ function titleCaseVietnamese(text) {
 
 let guest = "Bạn thân mến";
 
-if (path && path !== "index.html" && !path.includes(".")) {
-  const parts = path.split("-");
+// Only interpret the path as a guest name when it has the format
+// /anh-name, /chi-name, /ban-name, etc.
+if (
+  cleanPath &&
+  cleanPath !== "index.html" &&
+  !cleanPath.includes(".") &&
+  !cleanPath.includes("/")
+) {
+  const parts = cleanPath.split("-");
   const type = parts.shift().toLowerCase();
   const name = titleCaseVietnamese(parts.join("-"));
 
