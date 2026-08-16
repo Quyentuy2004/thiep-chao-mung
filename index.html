@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lễ Tốt Nghiệp — Nguyễn Thái Hoài An</title>
-<meta name="description" content="Thiệp mời lễ tốt nghiệp của Nguyễn Thái Hoài An">
+<meta name="description" content="Thiệp mời lễ tốt nghiệp của Nguyễn Thái Hoài An — link cá nhân hóa theo từng khách mời">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -285,7 +285,7 @@ footer{text-align:center;padding:35px 20px 90px;color:#817583;font-size:13px;lin
 
   <section class="card share">
     <h2>Thiệp dành riêng cho bạn</h2>
-    <p>Link này có thể tự nhận tên người được mời.</p>
+    <p>Mỗi khách mời có một đường dẫn riêng, ví dụ <strong>/anh-minh</strong> hoặc <strong>/chi-lan</strong>.</p>
     <div class="share-url" id="shareUrl"></div>
     <button onclick="copyLink()">📋 Sao chép link</button>
   </section>
@@ -301,14 +301,51 @@ footer{text-align:center;padding:35px 20px 90px;color:#817583;font-size:13px;lin
 </footer>
 
 <script>
-const params = new URLSearchParams(location.search);
-const guest = params.get("name");
+// ================================
+// PERSONALIZED GUEST PATH
+// Examples:
+// /anh-minh  -> Anh Minh
+// /chi-lan   -> Chị Lan
+// /ban-nam   -> Bạn Nam
+// /co-huong  -> Cô Hương
+// /chu-hung  -> Chú Hùng
+// /em-mai    -> Em Mai
+// ================================
 
-if (guest) {
-  const safeName = guest;
-  document.getElementById("heroGuest").textContent = safeName;
-  document.getElementById("guestName").textContent = safeName;
+const path = decodeURIComponent(window.location.pathname)
+  .replace(/^\\/+|\\/+$/g, "");
+
+const pronouns = {
+  anh: "Anh",
+  chi: "Chị",
+  ban: "Bạn",
+  co: "Cô",
+  chu: "Chú",
+  em: "Em"
+};
+
+function titleCaseVietnamese(text) {
+  return text
+    .split("-")
+    .filter(Boolean)
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
 }
+
+let guest = "Bạn thân mến";
+
+if (path && path !== "index.html" && !path.includes(".")) {
+  const parts = path.split("-");
+  const type = parts.shift().toLowerCase();
+  const name = titleCaseVietnamese(parts.join("-"));
+
+  if (pronouns[type] && name) {
+    guest = `${pronouns[type]} ${name}`;
+  }
+}
+
+document.getElementById("heroGuest").textContent = guest;
+document.getElementById("guestName").textContent = guest;
 
 document.getElementById("shareUrl").textContent = location.href;
 
