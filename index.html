@@ -1,2456 +1,406 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="Thiệp mời lễ tốt nghiệp"
-    >
-
-    <title>Lễ Tốt Nghiệp 🎓</title>
-
-
-    <!-- =====================================================
-         GOOGLE FONT - HỖ TRỢ TIẾNG VIỆT
-    ====================================================== -->
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
-        rel="stylesheet"
-    >
-
-
-    <style>
-
-        /* =====================================================
-           RESET
-        ====================================================== */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-
-        body {
-
-            font-family:
-                "Be Vietnam Pro",
-                Arial,
-                sans-serif;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #faf7ff 0%,
-                    #f7f1ff 50%,
-                    #fff7fb 100%
-                );
-
-            color: #302b38;
-
-            overflow-x: hidden;
-        }
-
-
-        /* =====================================================
-           BACKGROUND DECORATION
-        ====================================================== */
-
-        body::before {
-
-            content: "";
-
-            position: fixed;
-
-            width: 450px;
-            height: 450px;
-
-            border-radius: 50%;
-
-            background: #e9dcff;
-
-            filter: blur(110px);
-
-            top: -220px;
-            left: -180px;
-
-            opacity: .7;
-
-            z-index: -2;
-        }
-
-
-        body::after {
-
-            content: "";
-
-            position: fixed;
-
-            width: 450px;
-            height: 450px;
-
-            border-radius: 50%;
-
-            background: #ffddea;
-
-            filter: blur(110px);
-
-            bottom: -220px;
-            right: -180px;
-
-            opacity: .65;
-
-            z-index: -2;
-        }
-
-
-        /* =====================================================
-           OPENING SCREEN
-        ====================================================== */
-
-        .opening {
-
-            position: fixed;
-
-            inset: 0;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #563685,
-                    #8050a5,
-                    #c56d9e
-                );
-
-            z-index: 99999;
-
-            transition:
-                opacity 1s ease,
-                visibility 1s ease;
-        }
-
-
-        .opening.hide {
-
-            opacity: 0;
-
-            visibility: hidden;
-
-            pointer-events: none;
-        }
-
-
-        .opening-content {
-
-            width: min(420px, 90%);
-
-            text-align: center;
-
-            color: white;
-        }
-
-
-        /* =====================================================
-           ENVELOPE
-        ====================================================== */
-
-        .envelope {
-
-            position: relative;
-
-            width: 270px;
-            height: 180px;
-
-            margin:
-                0 auto 30px;
-
-            background: #ffffff;
-
-            border-radius: 8px;
-
-            box-shadow:
-                0 30px 70px rgba(0, 0, 0, .28);
-
-            animation:
-                envelopeFloat 3s ease-in-out infinite;
-        }
-
-
-        .envelope-top {
-
-            position: absolute;
-
-            left: 0;
-            top: 0;
-
-            width: 0;
-            height: 0;
-
-            border-left:
-                135px solid transparent;
-
-            border-right:
-                135px solid transparent;
-
-            border-top:
-                95px solid #e6d9ed;
-
-            z-index: 3;
-        }
-
-
-        .envelope-left {
-
-            position: absolute;
-
-            left: 0;
-            bottom: 0;
-
-            width: 0;
-            height: 0;
-
-            border-top:
-                90px solid transparent;
-
-            border-bottom:
-                90px solid transparent;
-
-            border-left:
-                135px solid #eee2f4;
-        }
-
-
-        .envelope-right {
-
-            position: absolute;
-
-            right: 0;
-            bottom: 0;
-
-            width: 0;
-            height: 0;
-
-            border-top:
-                90px solid transparent;
-
-            border-bottom:
-                90px solid transparent;
-
-            border-right:
-                135px solid #e7d8ef;
-        }
-
-
-        .seal {
-
-            position: absolute;
-
-            left: 50%;
-            top: 55px;
-
-            transform:
-                translateX(-50%);
-
-            width: 62px;
-            height: 62px;
-
-            display: flex;
-
-            justify-content: center;
-            align-items: center;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #b6558b,
-                    #cf6da1
-                );
-
-            border-radius: 50%;
-
-            z-index: 5;
-
-            font-size: 29px;
-
-            box-shadow:
-                0 8px 20px rgba(0,0,0,.2);
-        }
-
-
-        .opening h1 {
-
-            font-family:
-                "Playfair Display",
-                Georgia,
-                serif;
-
-            font-size:
-                clamp(27px, 6vw, 35px);
-
-            margin-bottom: 10px;
-        }
-
-
-        .opening p {
-
-            font-size: 14px;
-
-            opacity: .9;
-
-            margin-bottom: 25px;
-        }
-
-
-        .open-button {
-
-            border: none;
-
-            padding:
-                15px 35px;
-
-            border-radius: 50px;
-
-            background: white;
-
-            color: #704696;
-
-            font-family:
-                "Be Vietnam Pro",
-                sans-serif;
-
-            font-size: 16px;
-
-            font-weight: 700;
-
-            cursor: pointer;
-
-            box-shadow:
-                0 10px 30px rgba(0,0,0,.22);
-
-            transition:
-                transform .25s ease,
-                box-shadow .25s ease;
-        }
-
-
-        .open-button:hover {
-
-            transform:
-                translateY(-3px)
-                scale(1.03);
-
-            box-shadow:
-                0 15px 35px rgba(0,0,0,.25);
-        }
-
-
-        /* =====================================================
-           HERO
-        ====================================================== */
-
-        .hero {
-
-            min-height: 100vh;
-
-            display: flex;
-
-            flex-direction: column;
-
-            justify-content: center;
-
-            align-items: center;
-
-            text-align: center;
-
-            padding:
-                50px 20px;
-        }
-
-
-        .graduation-cap {
-
-            font-size:
-                clamp(65px, 12vw, 100px);
-
-            margin-bottom: 20px;
-
-            animation:
-                floating 3s ease-in-out infinite;
-        }
-
-
-        .hero-label {
-
-            font-size: 13px;
-
-            letter-spacing: 5px;
-
-            color: #8560a3;
-
-            font-weight: 600;
-
-            margin-bottom: 18px;
-        }
-
-
-        .hero h1 {
-
-            font-family:
-                "Playfair Display",
-                Georgia,
-                serif;
-
-            font-size:
-                clamp(48px, 10vw, 90px);
-
-            line-height: 1.1;
-
-            font-weight: 800;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #604092,
-                    #9d5494,
-                    #bf6195
-                );
-
-            -webkit-background-clip: text;
-
-            background-clip: text;
-
-            color: transparent;
-
-            margin-bottom: 25px;
-        }
-
-
-        .hero-subtitle {
-
-            font-size:
-                clamp(17px, 4vw, 22px);
-
-            line-height: 1.8;
-        }
-
-
-        .guest-name {
-
-            color: #b7588d;
-
-            font-weight: 800;
-        }
-
-
-        .heart {
-
-            display: inline-block;
-
-            animation:
-                heartBeat 1.3s infinite;
-        }
-
-
-        .divider {
-
-            width: 90px;
-
-            height: 3px;
-
-            margin:
-                25px auto;
-
-            border-radius: 10px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #7950a1,
-                    #c36496
-                );
-        }
-
-
-        .scroll-hint {
-
-            margin-top: 70px;
-
-            color: #8c8093;
-
-            font-size: 13px;
-        }
-
-
-        .scroll-arrow {
-
-            display: block;
-
-            margin-top: 8px;
-
-            font-size: 24px;
-
-            animation:
-                bounce 1.5s infinite;
-        }
-
-
-        /* =====================================================
-           MAIN CONTAINER
-        ====================================================== */
-
-        .container {
-
-            width:
-                min(900px, 92%);
-
-            margin:
-                0 auto;
-        }
-
-
-        /* =====================================================
-           CARD
-        ====================================================== */
-
-        .card {
-
-            position: relative;
-
-            background:
-                rgba(255,255,255,.86);
-
-            backdrop-filter:
-                blur(15px);
-
-            -webkit-backdrop-filter:
-                blur(15px);
-
-            border:
-                1px solid rgba(255,255,255,.9);
-
-            border-radius: 28px;
-
-            padding:
-                45px 30px;
-
-            margin-bottom: 35px;
-
-            text-align: center;
-
-            box-shadow:
-                0 20px 60px
-                rgba(90,60,120,.10);
-        }
-
-
-        .card h2 {
-
-            font-family:
-                "Playfair Display",
-                Georgia,
-                serif;
-
-            color: #62418e;
-
-            font-size:
-                clamp(26px, 5vw, 32px);
-
-            line-height: 1.3;
-
-            margin-bottom: 20px;
-        }
-
-
-        .card-text {
-
-            font-size: 17px;
-
-            line-height: 1.9;
-        }
-
-
-        /* =====================================================
-           PERSONAL INVITATION
-        ====================================================== */
-
-        .guest-display {
-
-            font-family:
-                "Playfair Display",
-                Georgia,
-                serif;
-
-            font-size: 27px;
-
-            font-weight: 700;
-
-            color: #b65b90;
-
-            margin:
-                10px 0 22px;
-        }
-
-
-        /* =====================================================
-           PHOTO
-        ====================================================== */
-
-        .photo-frame {
-
-            width:
-                min(270px, 75vw);
-
-            height:
-                min(330px, 92vw);
-
-            margin:
-                25px auto;
-
-            padding: 8px;
-
-            background: white;
-
-            border-radius: 22px;
-
-            box-shadow:
-                0 18px 45px
-                rgba(0,0,0,.16);
-
-            transform:
-                rotate(-1.5deg);
-
-            transition:
-                transform .3s ease;
-        }
-
-
-        .photo-frame:hover {
-
-            transform:
-                rotate(0deg)
-                scale(1.02);
-        }
-
-
-        .photo-frame img {
-
-            width: 100%;
-            height: 100%;
-
-            display: block;
-
-            object-fit: cover;
-
-            border-radius: 16px;
-        }
-
-
-        .graduate-name {
-
-            font-family:
-                "Playfair Display",
-                Georgia,
-                serif;
-
-            color: #60408e;
-
-            font-size: 29px;
-
-            font-weight: 700;
-        }
-
-
-        .class-year {
-
-            margin-top: 8px;
-
-            color: #817487;
-
-            font-size: 14px;
-        }
-
-
-        /* =====================================================
-           EVENT INFORMATION
-        ====================================================== */
-
-        .event-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 15px;
-
-            margin-top: 25px;
-        }
-
-
-        .event-item {
-
-            padding: 22px 12px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #f8f2ff,
-                    #fff5fa
-                );
-
-            border-radius: 20px;
-
-            transition:
-                transform .25s ease;
-        }
-
-
-        .event-item:hover {
-
-            transform:
-                translateY(-4px);
-        }
-
-
-        .event-icon {
-
-            font-size: 32px;
-
-            margin-bottom: 10px;
-        }
-
-
-        .event-item strong {
-
-            display: block;
-
-            color: #67468e;
-
-            font-size: 15px;
-
-            margin-bottom: 7px;
-        }
-
-
-        .event-item p {
-
-            font-size: 14px;
-
-            line-height: 1.5;
-        }
-
-
-        /* =====================================================
-           BUTTON
-        ====================================================== */
-
-        .button {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap: 8px;
-
-            margin-top: 25px;
-
-            padding:
-                14px 27px;
-
-            border: none;
-
-            border-radius: 50px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #654392,
-                    #b65b91
-                );
-
-            color: white;
-
-            text-decoration: none;
-
-            font-family:
-                "Be Vietnam Pro",
-                sans-serif;
-
-            font-size: 15px;
-
-            font-weight: 700;
-
-            cursor: pointer;
-
-            box-shadow:
-                0 10px 25px
-                rgba(100,65,140,.23);
-
-            transition:
-                transform .25s ease,
-                box-shadow .25s ease;
-        }
-
-
-        .button:hover {
-
-            transform:
-                translateY(-3px);
-
-            box-shadow:
-                0 15px 30px
-                rgba(100,65,140,.28);
-        }
-
-
-        /* =====================================================
-           COUNTDOWN
-        ====================================================== */
-
-        .countdown {
-
-            display: flex;
-
-            justify-content: center;
-
-            gap: 12px;
-
-            margin-top: 25px;
-        }
-
-
-        .time-box {
-
-            min-width: 80px;
-
-            padding:
-                15px 8px;
-
-            border-radius: 18px;
-
-            color: white;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #62418d,
-                    #ad5c96
-                );
-
-            box-shadow:
-                0 8px 20px
-                rgba(90,60,120,.15);
-        }
-
-
-        .time-number {
-
-            font-size: 29px;
-
-            font-weight: 800;
-
-            line-height: 1.2;
-        }
-
-
-        .time-label {
-
-            margin-top: 5px;
-
-            font-size: 10px;
-
-            letter-spacing: 1px;
-
-            opacity: .85;
-        }
-
-
-        /* =====================================================
-           MUSIC PLAYER
-        ====================================================== */
-
-        .music-player {
-
-            position: fixed;
-
-            right: 20px;
-            bottom: 20px;
-
-            z-index: 5000;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 10px;
-
-            padding:
-                10px 15px 10px 10px;
-
-            border-radius: 50px;
-
-            background:
-                rgba(255,255,255,.92);
-
-            backdrop-filter:
-                blur(12px);
-
-            box-shadow:
-                0 10px 30px
-                rgba(50,30,70,.15);
-
-            border:
-                1px solid rgba(255,255,255,.8);
-        }
-
-
-        .music-button {
-
-            width: 42px;
-            height: 42px;
-
-            border: none;
-
-            border-radius: 50%;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #654392,
-                    #b65b91
-                );
-
-            color: white;
-
-            cursor: pointer;
-
-            font-size: 16px;
-        }
-
-
-        .music-disc {
-
-            width: 32px;
-            height: 32px;
-
-            border-radius: 50%;
-
-            background:
-                repeating-radial-gradient(
-                    circle,
-                    #222 0px,
-                    #222 2px,
-                    #555 3px,
-                    #222 4px
-                );
-
-            animation:
-                spin 3s linear infinite;
-
-            animation-play-state: paused;
-        }
-
-
-        .music-disc.playing {
-
-            animation-play-state:
-                running;
-        }
-
-
-        .music-text {
-
-            font-size: 11px;
-
-            max-width: 120px;
-
-            overflow: hidden;
-
-            white-space: nowrap;
-
-            text-overflow: ellipsis;
-        }
-
-
-        /* =====================================================
-           RSVP
-        ====================================================== */
-
-        .thanks {
-
-            display: none;
-
-            margin-top: 20px;
-
-            padding: 15px;
-
-            border-radius: 15px;
-
-            background: #f7efff;
-
-            color: #754a99;
-
-            font-weight: 700;
-
-            line-height: 1.6;
-        }
-
-
-        .thanks.show {
-
-            display: block;
-
-            animation:
-                fadeUp .5s ease;
-        }
-
-
-        /* =====================================================
-           SHARE
-        ====================================================== */
-
-        .share-box {
-
-            margin-top: 20px;
-
-            padding:
-                14px;
-
-            border-radius: 15px;
-
-            background:
-                #faf7ff;
-
-            font-size: 13px;
-
-            word-break: break-all;
-
-            color: #756b7b;
-        }
-
-
-        /* =====================================================
-           FOOTER
-        ====================================================== */
-
-        footer {
-
-            text-align: center;
-
-            padding:
-                25px 20px 80px;
-
-            color: #817487;
-
-            font-size: 13px;
-
-            line-height: 1.8;
-        }
-
-
-        /* =====================================================
-           CONFETTI
-        ====================================================== */
-
-        .confetti {
-
-            position: fixed;
-
-            top: -30px;
-
-            z-index: 999999;
-
-            pointer-events: none;
-
-            animation:
-                confettiFall linear forwards;
-        }
-
-
-        /* =====================================================
-           ANIMATIONS
-        ====================================================== */
-
-        @keyframes envelopeFloat {
-
-            0%, 100% {
-                transform:
-                    translateY(0);
-            }
-
-            50% {
-                transform:
-                    translateY(-12px);
-            }
-        }
-
-
-        @keyframes floating {
-
-            0%, 100% {
-                transform:
-                    translateY(0);
-            }
-
-            50% {
-                transform:
-                    translateY(-13px);
-            }
-        }
-
-
-        @keyframes bounce {
-
-            0%, 100% {
-                transform:
-                    translateY(0);
-            }
-
-            50% {
-                transform:
-                    translateY(8px);
-            }
-        }
-
-
-        @keyframes heartBeat {
-
-            0%, 100% {
-                transform:
-                    scale(1);
-            }
-
-            50% {
-                transform:
-                    scale(1.25);
-            }
-        }
-
-
-        @keyframes spin {
-
-            from {
-                transform:
-                    rotate(0deg);
-            }
-
-            to {
-                transform:
-                    rotate(360deg);
-            }
-        }
-
-
-        @keyframes fadeUp {
-
-            from {
-                opacity: 0;
-
-                transform:
-                    translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-
-                transform:
-                    translateY(0);
-            }
-        }
-
-
-        @keyframes confettiFall {
-
-            to {
-
-                transform:
-                    translateY(110vh)
-                    rotate(720deg);
-
-                opacity: .9;
-            }
-        }
-
-
-        /* =====================================================
-           MOBILE
-        ====================================================== */
-
-        @media (max-width: 650px) {
-
-            .hero {
-
-                min-height:
-                    90vh;
-
-                padding:
-                    35px 18px;
-            }
-
-
-            .hero-label {
-
-                letter-spacing:
-                    3px;
-
-                font-size:
-                    11px;
-            }
-
-
-            .hero h1 {
-
-                font-size:
-                    clamp(42px, 13vw, 65px);
-            }
-
-
-            .event-grid {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .countdown {
-
-                gap: 6px;
-            }
-
-
-            .time-box {
-
-                min-width:
-                    64px;
-
-                padding:
-                    12px 5px;
-            }
-
-
-            .time-number {
-
-                font-size:
-                    23px;
-            }
-
-
-            .time-label {
-
-                font-size:
-                    8px;
-            }
-
-
-            .card {
-
-                padding:
-                    35px 20px;
-
-                border-radius:
-                    23px;
-            }
-
-
-            .card-text {
-
-                font-size:
-                    16px;
-            }
-
-
-            .music-player {
-
-                right: 12px;
-
-                bottom: 12px;
-            }
-
-
-            .music-text {
-
-                display:
-                    none;
-            }
-
-
-            .opening h1 {
-
-                font-size:
-                    27px;
-            }
-        }
-
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lễ Tốt Nghiệp — Nguyễn Thái Hoài An</title>
+<meta name="description" content="Thiệp mời lễ tốt nghiệp của Nguyễn Thái Hoài An">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#241b2b;
+  --muted:#74697c;
+  --purple:#5d3c7d;
+  --purple2:#8d5aa6;
+  --rose:#c47a9e;
+  --gold:#c9a45c;
+  --cream:#fffaf2;
+  --paper:#fffdf9;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Be Vietnam Pro",sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 10% 10%,rgba(201,164,92,.13),transparent 28%),
+    radial-gradient(circle at 90% 20%,rgba(141,90,166,.12),transparent 30%),
+    linear-gradient(135deg,#fbf8ff,#fffaf6);
+  overflow-x:hidden;
+}
+body:before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:100;
+  opacity:.22;
+  background-image:radial-gradient(#8d5aa6 .6px,transparent .6px);
+  background-size:12px 12px;
+  mask-image:linear-gradient(to bottom,black,transparent 85%);
+}
+.opening{
+  position:fixed;inset:0;z-index:9999;
+  display:grid;place-items:center;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(255,255,255,.14),transparent 28%),
+    linear-gradient(135deg,#382348,#62417e 55%,#9a5f82);
+  transition:.9s ease;
+}
+.opening.hide{opacity:0;visibility:hidden;pointer-events:none}
+.opening-card{
+  width:min(430px,90vw);text-align:center;color:#fff;
+  padding:30px 24px;
+}
+.envelope{
+  width:280px;height:185px;margin:0 auto 28px;
+  position:relative;background:#fff;border-radius:10px;
+  box-shadow:0 28px 70px rgba(0,0,0,.3);
+  animation:float 3s ease-in-out infinite;
+}
+.envelope:before{
+  content:"";position:absolute;inset:0;
+  border-top:95px solid #eadff0;
+  border-left:140px solid transparent;border-right:140px solid transparent;
+}
+.envelope:after{
+  content:"";position:absolute;left:50%;top:58px;
+  width:62px;height:62px;transform:translateX(-50%);
+  border-radius:50%;background:linear-gradient(135deg,var(--gold),#ead18d);
+  box-shadow:0 8px 18px rgba(0,0,0,.18);
+}
+.opening-card h1{font:700 34px/1.2 "Playfair Display",serif}
+.opening-card p{margin:10px 0 24px;color:#eee}
+.open-btn{
+  border:1px solid rgba(255,255,255,.7);background:#fff;color:#56356f;
+  border-radius:999px;padding:14px 30px;font-weight:700;cursor:pointer;
+  box-shadow:0 10px 30px rgba(0,0,0,.2)
+}
+.hero{
+  min-height:100vh;display:grid;place-items:center;text-align:center;
+  padding:70px 20px 40px;position:relative;
+}
+.hero-inner{max-width:1000px}
+.cap{font-size:78px;filter:drop-shadow(0 12px 15px rgba(70,40,90,.16));animation:float 3.5s ease-in-out infinite}
+.kicker{
+  margin-top:20px;letter-spacing:6px;font-size:12px;font-weight:600;color:#80608e
+}
+.hero h1{
+  margin:18px 0 22px;
+  font:800 clamp(48px,10vw,94px)/1.03 "Playfair Display",serif;
+  background:linear-gradient(90deg,#51336f,#87549b,#bd6d96);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.ornament{display:flex;align-items:center;gap:13px;justify-content:center;color:var(--gold)}
+.ornament span{width:70px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.subtitle{font-size:18px;line-height:1.9;margin-top:22px}
+.guest{color:#a95783;font-weight:700}
+.scroll{margin-top:70px;color:var(--muted);font-size:12px;letter-spacing:2px}
+.scroll b{display:block;font-size:24px;margin-top:7px;animation:bounce 1.5s infinite}
+.container{width:min(920px,92%);margin:auto}
+.card{
+  position:relative;margin:0 0 28px;padding:48px 34px;
+  border:1px solid rgba(201,164,92,.23);border-radius:28px;
+  background:rgba(255,253,249,.84);backdrop-filter:blur(12px);
+  box-shadow:0 22px 60px rgba(67,45,85,.09);
+  text-align:center;overflow:hidden;
+}
+.card:before{
+  content:"";position:absolute;inset:10px;border:1px solid rgba(201,164,92,.12);
+  border-radius:22px;pointer-events:none
+}
+.card h2{position:relative;font:700 clamp(28px,5vw,38px)/1.25 "Playfair Display",serif;color:var(--purple);margin-bottom:18px}
+.card p{position:relative;line-height:1.9;color:#514856}
+.intro{font-size:16px;max-width:700px;margin:auto}
+.name{font:700 30px/1.3 "Playfair Display",serif;color:#ad5f87;margin:8px 0 20px}
+.photo{
+  width:min(330px,78vw);height:min(400px,95vw);margin:28px auto 20px;
+  padding:8px;background:#fff;border-radius:22px;
+  box-shadow:0 18px 45px rgba(55,35,75,.17);transform:rotate(-1deg)
+}
+.photo img{width:100%;height:100%;object-fit:cover;border-radius:16px;display:block}
+.photo-note{font-size:13px;color:var(--muted)}
+.event-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:25px}
+.event{
+  padding:24px 14px;border-radius:20px;
+  background:linear-gradient(145deg,#faf5ff,#fff8f3);
+  border:1px solid rgba(141,90,166,.09)
+}
+.event .icon{font-size:30px;margin-bottom:9px}
+.event strong{display:block;color:var(--purple);font-size:14px;margin-bottom:7px}
+.event div:last-child{font-size:14px;line-height:1.6;color:#5f5665}
+.map{
+  display:inline-flex;margin-top:24px;text-decoration:none;color:#fff;
+  background:linear-gradient(135deg,#5b397b,#a65d8b);padding:13px 24px;border-radius:999px;
+  font-weight:700;box-shadow:0 10px 25px rgba(91,57,123,.2)
+}
+.countdown{display:flex;justify-content:center;gap:10px;margin-top:24px;flex-wrap:wrap}
+.time{
+  min-width:88px;padding:15px 9px;border-radius:18px;
+  background:linear-gradient(145deg,#573675,#a45f8b);color:white
+}
+.time b{display:block;font-size:29px}.time small{font-size:9px;letter-spacing:1.5px;opacity:.8}
+.rsvp button,.share button{
+  border:0;border-radius:999px;padding:14px 25px;color:#fff;font-weight:700;cursor:pointer;
+  background:linear-gradient(135deg,#5b397b,#b46690);margin-top:20px
+}
+.thanks{display:none;margin-top:18px;padding:14px;border-radius:15px;background:#f5ecfb;color:#71468b;font-weight:600}
+.thanks.show{display:block}
+.share-url{
+  margin:18px auto 0;max-width:720px;padding:13px 16px;border-radius:14px;
+  background:#faf6fd;color:#756c79;font-size:12px;word-break:break-all
+}
+.music{
+  position:fixed;right:18px;bottom:18px;z-index:500;
+  display:flex;align-items:center;gap:9px;padding:8px 13px 8px 8px;
+  border-radius:999px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);
+  box-shadow:0 12px 30px rgba(55,35,75,.15)
+}
+.music button{width:42px;height:42px;border:0;border-radius:50%;color:white;background:linear-gradient(135deg,#5b397b,#b46690);cursor:pointer}
+.disc{width:30px;height:30px;border-radius:50%;background:repeating-radial-gradient(circle,#333 0 2px,#777 3px,#333 4px);animation:spin 3s linear infinite;animation-play-state:paused}
+.disc.play{animation-play-state:running}
+.music small{font-size:11px;color:#655b68}
+footer{text-align:center;padding:35px 20px 90px;color:#817583;font-size:13px;line-height:1.8}
+.petal{position:fixed;top:-30px;z-index:400;pointer-events:none;animation:fall linear forwards}
+@keyframes float{50%{transform:translateY(-10px)}}
+@keyframes bounce{50%{transform:translateY(8px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:.2}}
+@media(max-width:650px){
+  .hero{padding-top:45px}.cap{font-size:64px}.kicker{letter-spacing:3px}
+  .hero h1{font-size:clamp(45px,14vw,68px)}.subtitle{font-size:16px}
+  .card{padding:38px 20px}.event-grid{grid-template-columns:1fr}
+  .time{min-width:70px}.time b{font-size:24px}.music small{display:none}
+}
+</style>
 </head>
-
 
 <body>
 
-
-<!-- =====================================================
-     OPENING SCREEN
-====================================================== -->
-
-<div
-    class="opening"
-    id="opening"
->
-
-    <div class="opening-content">
-
-
-        <div class="envelope">
-
-            <div class="envelope-top"></div>
-
-            <div class="envelope-left"></div>
-
-            <div class="envelope-right"></div>
-
-            <div class="seal">
-                🎓
-            </div>
-
-        </div>
-
-
-        <h1>
-            Một lời mời đặc biệt
-        </h1>
-
-
-        <p>
-            Dành riêng cho bạn ❤️
-        </p>
-
-
-        <button
-            class="open-button"
-            onclick="openInvitation()"
-        >
-            Mở thiệp 🎓
-        </button>
-
-
-    </div>
-
+<div class="opening" id="opening">
+  <div class="opening-card">
+    <div class="envelope"></div>
+    <h1>Một lời mời đặc biệt</h1>
+    <p>Dành riêng cho bạn · Lễ Tốt Nghiệp 2026</p>
+    <button class="open-btn" onclick="openInvitation()">Mở thiệp 🎓</button>
+  </div>
 </div>
 
-
-<!-- =====================================================
-     MUSIC
-====================================================== -->
-
-<audio
-    id="music"
-    loop
->
-
-    <source
-        src="music/graduation.mp3"
-        type="audio/mpeg"
-    >
-
+<audio id="music" loop>
+  <source src="music/graduation.mp3" type="audio/mpeg">
 </audio>
 
-
-<!-- =====================================================
-     MUSIC PLAYER
-====================================================== -->
-
-<div
-    class="music-player"
-    id="musicPlayer"
->
-
-    <button
-        class="music-button"
-        id="musicButton"
-        onclick="toggleMusic()"
-    >
-        ▶
-    </button>
-
-
-    <div
-        class="music-disc"
-        id="musicDisc"
-    ></div>
-
-
-    <div class="music-text">
-        Graduation Music
-    </div>
-
+<div class="music">
+  <button id="musicBtn" onclick="toggleMusic()">▶</button>
+  <div class="disc" id="disc"></div>
+  <small>Graduation Music</small>
 </div>
 
-
-<!-- =====================================================
-     HERO
-====================================================== -->
-
 <section class="hero">
-
-
-    <div class="graduation-cap">
-        🎓
-    </div>
-
-
-    <div class="hero-label">
-        GRADUATION CEREMONY · 2026
-    </div>
-
-
-    <h1>
-        Lễ Tốt Nghiệp
-    </h1>
-
-
-    <div class="divider"></div>
-
-
-    <p class="hero-subtitle">
-
-        Trân trọng kính mời
-
-        <br>
-
-        <span
-            class="guest-name"
-            id="heroGuest"
-        >
-            Bạn
-        </span>
-
-        đến chung vui cùng mình
-
-        <span class="heart">
-            ❤️
-        </span>
-
+  <div class="hero-inner">
+    <div class="cap">🎓</div>
+    <div class="kicker">GRADUATION CEREMONY · 2026</div>
+    <h1>Lễ Tốt Nghiệp</h1>
+    <div class="ornament"><span></span> ✦ <span></span></div>
+    <p class="subtitle">
+      Trân trọng kính mời<br>
+      <span class="guest" id="heroGuest">Bạn</span>
+      đến chung vui cùng mình <span>❤️</span>
     </p>
-
-
-    <div class="scroll-hint">
-
-        Kéo xuống để xem thiệp
-
-        <span class="scroll-arrow">
-            ↓
-        </span>
-
-    </div>
-
-
+    <div class="scroll">KÉO XUỐNG ĐỂ XEM THIỆP<b>↓</b></div>
+  </div>
 </section>
-
-
-<!-- =====================================================
-     MAIN
-====================================================== -->
 
 <main class="container">
 
-
-    <!-- =================================================
-         INVITATION
-    ================================================== -->
-
-    <section class="card">
-
-
-        <h2>
-            💌 Thân gửi
-        </h2>
-
-
-        <div
-            class="guest-display"
-            id="guestName"
-        >
-            Bạn thân mến
-        </div>
-
-
-        <p class="card-text">
-
-            Sau một hành trình dài với rất nhiều
-            kỷ niệm, thử thách và những ngày tháng
-            không thể nào quên...
-
-            <br><br>
-
-            Cuối cùng mình cũng đã đi đến
-            một trong những khoảnh khắc
-            đặc biệt nhất của tuổi trẻ:
-
-            <br>
-
-            <strong>
-                Ngày tốt nghiệp 🎓
-            </strong>
-
-            <br><br>
-
-            Mình rất vui nếu bạn có thể dành
-            chút thời gian đến tham dự và
-            cùng mình lưu giữ khoảnh khắc
-            đáng nhớ này.
-
-            <br><br>
-
-            <strong>
-                Sự hiện diện của bạn chính là
-                món quà tuyệt vời nhất. ❤️
-            </strong>
-
-        </p>
-
-
-    </section>
-
-
-    <!-- =================================================
-         GRADUATE
-    ================================================== -->
-
-    <section class="card">
-
-
-        <h2>
-            🎓 Người tốt nghiệp
-        </h2>
-
-
-        <div class="photo-frame">
-
-            <img
-                src="images/avatar.jpg"
-                alt="Ảnh tốt nghiệp"
-            >
-
-        </div>
-
-
-        <div class="graduate-name">
-            NGUYỄN VĂN A
-        </div>
-
-
-        <div class="class-year">
-            Class of 2026
-        </div>
-
-
-    </section>
-
-
-    <!-- =================================================
-         EVENT
-    ================================================== -->
-
-    <section class="card">
-
-
-        <h2>
-            📅 Thông tin buổi lễ
-        </h2>
-
-
-        <div class="event-grid">
-
-
-            <div class="event-item">
-
-                <div class="event-icon">
-                    📅
-                </div>
-
-                <strong>
-                    Ngày
-                </strong>
-
-                <p>
-                    20/09/2026
-                </p>
-
-            </div>
-
-
-            <div class="event-item">
-
-                <div class="event-icon">
-                    ⏰
-                </div>
-
-                <strong>
-                    Thời gian
-                </strong>
-
-                <p>
-                    08:00 AM
-                </p>
-
-            </div>
-
-
-            <div class="event-item">
-
-                <div class="event-icon">
-                    📍
-                </div>
-
-                <strong>
-                    Địa điểm
-                </strong>
-
-                <p>
-                    VinUniversity
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-        <a
-            class="button"
-            href="https://maps.google.com/?q=VinUniversity"
-            target="_blank"
-            rel="noopener"
-        >
-
-            📍
-
-            Mở Google Maps
-
-        </a>
-
-
-    </section>
-
-
-    <!-- =================================================
-         COUNTDOWN
-    ================================================== -->
-
-    <section class="card">
-
-
-        <h2>
-            ⏳ Đếm ngược đến ngày đặc biệt
-        </h2>
-
-
-        <p class="card-text">
-
-            Chúng ta sắp gặp nhau rồi!
-
-        </p>
-
-
-        <div class="countdown">
-
-
-            <div class="time-box">
-
-                <div
-                    class="time-number"
-                    id="days"
-                >
-                    00
-                </div>
-
-                <div class="time-label">
-                    NGÀY
-                </div>
-
-            </div>
-
-
-            <div class="time-box">
-
-                <div
-                    class="time-number"
-                    id="hours"
-                >
-                    00
-                </div>
-
-                <div class="time-label">
-                    GIỜ
-                </div>
-
-            </div>
-
-
-            <div class="time-box">
-
-                <div
-                    class="time-number"
-                    id="minutes"
-                >
-                    00
-                </div>
-
-                <div class="time-label">
-                    PHÚT
-                </div>
-
-            </div>
-
-
-            <div class="time-box">
-
-                <div
-                    class="time-number"
-                    id="seconds"
-                >
-                    00
-                </div>
-
-                <div class="time-label">
-                    GIÂY
-                </div>
-
-            </div>
-
-
-        </div>
-
-
-    </section>
-
-
-    <!-- =================================================
-         RSVP
-    ================================================== -->
-
-    <section class="card">
-
-
-        <h2>
-            ❤️ Bạn sẽ đến chứ?
-        </h2>
-
-
-        <p class="card-text">
-
-            Mình rất mong được gặp bạn
-            trong ngày đặc biệt này.
-
-        </p>
-
-
-        <button
-            class="button"
-            onclick="confirmAttendance()"
-        >
-
-            🎉
-
-            Mình sẽ tham dự
-
-        </button>
-
-
-        <div
-            class="thanks"
-            id="thanks"
-        >
-
-            🎉 Tuyệt vời!
-
-            <br>
-
-            Hẹn gặp bạn tại lễ tốt nghiệp nhé! ❤️🎓
-
-        </div>
-
-
-    </section>
-
-
-    <!-- =================================================
-         SHARE
-    ================================================== -->
-
-    <section class="card">
-
-
-        <h2>
-            🔗 Link thiệp của bạn
-        </h2>
-
-
-        <p class="card-text">
-
-            Bạn có thể gửi link này cho người khác.
-
-        </p>
-
-
-        <div
-            class="share-box"
-            id="shareLink"
-        >
-            Đang tạo link...
-        </div>
-
-
-        <button
-            class="button"
-            onclick="copyLink()"
-        >
-
-            📋
-
-            Sao chép link
-
-        </button>
-
-
-    </section>
-
+  <section class="card">
+    <h2>Thân gửi</h2>
+    <div class="name" id="guestName">Bạn thân mến</div>
+    <p class="intro">
+      Sau một hành trình dài với những ngày tháng đáng nhớ,
+      cuối cùng mình cũng đã chạm đến một cột mốc thật đặc biệt.
+      <br><br>
+      Mình rất mong bạn có thể dành thời gian đến tham dự,
+      cùng mình lưu giữ những khoảnh khắc đẹp của tuổi trẻ
+      trong ngày tốt nghiệp này.
+      <br><br>
+      <strong>Sự hiện diện của bạn chính là món quà tuyệt vời nhất. ❤️</strong>
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>Người tốt nghiệp</h2>
+    <div class="photo">
+      <img src="images/avatar.jpg" alt="Ảnh tốt nghiệp của Nguyễn Thái Hoài An"
+           onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(145deg,#efe5f5,#fff4ee)'">
+    </div>
+    <div class="name">Nguyễn Thái Hoài An</div>
+    <div class="photo-note">Class of 2026 · Graduation Day</div>
+  </section>
+
+  <section class="card">
+    <h2>Thông tin buổi lễ</h2>
+    <div class="event-grid">
+      <div class="event">
+        <div class="icon">📅</div>
+        <strong>Ngày</strong>
+        <div>23/08/2026</div>
+      </div>
+      <div class="event">
+        <div class="icon">⏰</div>
+        <strong>Thời gian</strong>
+        <div>15:00 · Buổi chiều</div>
+      </div>
+      <div class="event">
+        <div class="icon">📍</div>
+        <strong>Địa điểm</strong>
+        <div>Trung tâm Hội nghị Quốc gia</div>
+      </div>
+    </div>
+    <a class="map" target="_blank" rel="noopener"
+       href="https://www.google.com/maps/search/?api=1&query=Trung%20tam%20Hoi%20nghi%20Quoc%20gia%20Ha%20Noi">
+      📍 Mở Google Maps
+    </a>
+  </section>
+
+  <section class="card">
+    <h2>Đếm ngược đến ngày đặc biệt</h2>
+    <p>Chỉ còn một chút nữa thôi là chúng ta sẽ gặp nhau! ✨</p>
+    <div class="countdown">
+      <div class="time"><b id="days">00</b><small>NGÀY</small></div>
+      <div class="time"><b id="hours">00</b><small>GIỜ</small></div>
+      <div class="time"><b id="minutes">00</b><small>PHÚT</small></div>
+      <div class="time"><b id="seconds">00</b><small>GIÂY</small></div>
+    </div>
+  </section>
+
+  <section class="card rsvp">
+    <h2>Bạn sẽ đến chứ?</h2>
+    <p>Mình rất mong được gặp bạn trong ngày đặc biệt này. 🎓</p>
+    <button onclick="confirmAttendance()">🎉 Mình sẽ tham dự</button>
+    <div class="thanks" id="thanks">
+      Tuyệt vời! Hẹn gặp bạn tại lễ tốt nghiệp nhé! ❤️🎓
+    </div>
+  </section>
+
+  <section class="card share">
+    <h2>Thiệp dành riêng cho bạn</h2>
+    <p>Link này có thể tự nhận tên người được mời.</p>
+    <div class="share-url" id="shareUrl"></div>
+    <button onclick="copyLink()">📋 Sao chép link</button>
+  </section>
 
 </main>
 
-
-<!-- =====================================================
-     FOOTER
-====================================================== -->
-
 <footer>
-
-    🎓 Graduation Day 2026
-
-    <br>
-
-    Một chương khép lại,
-    một hành trình mới bắt đầu.
-
-    <br><br>
-
-    Made with ❤️
-
+  🎓 <strong>Nguyễn Thái Hoài An</strong> · Graduation 2026
+  <br>
+  23/08/2026 · 15:00 · Trung tâm Hội nghị Quốc gia
+  <br><br>
+  Một chương khép lại, một hành trình mới bắt đầu. ❤️
 </footer>
 
-
 <script>
-
-/* =====================================================
-   LẤY TÊN TỪ URL
-===================================================== */
-
-const params =
-    new URLSearchParams(
-        window.location.search
-    );
-
-
-let guest =
-    params.get("name");
-
-
-/*
-    Nếu link là:
-
-    ?name=Minh
-
-    thì website sẽ hiển thị:
-
-    Minh
-*/
-
+const params = new URLSearchParams(location.search);
+const guest = params.get("name");
 
 if (guest) {
-
-    try {
-
-        guest =
-            decodeURIComponent(guest);
-
-    } catch (error) {
-
-        console.log(
-            "Không thể decode tên."
-        );
-
-    }
-
-
-    document
-        .getElementById("guestName")
-        .innerText =
-        guest;
-
-
-    document
-        .getElementById("heroGuest")
-        .innerText =
-        guest;
-
+  const safeName = guest;
+  document.getElementById("heroGuest").textContent = safeName;
+  document.getElementById("guestName").textContent = safeName;
 }
 
+document.getElementById("shareUrl").textContent = location.href;
 
-/* =====================================================
-   LINK CHIA SẺ
-===================================================== */
+const music = document.getElementById("music");
+const musicBtn = document.getElementById("musicBtn");
+const disc = document.getElementById("disc");
+let playing = false;
 
-function updateShareLink() {
-
-    const currentUrl =
-        window.location.href;
-
-
-    document
-        .getElementById("shareLink")
-        .innerText =
-        currentUrl;
-
+function openInvitation(){
+  document.getElementById("opening").classList.add("hide");
+  music.volume = .32;
+  music.play().then(()=>{
+    playing=true;
+    musicBtn.textContent="❚❚";
+    disc.classList.add("play");
+  }).catch(()=>{});
+  petals(28);
 }
 
-
-updateShareLink();
-
-
-/* =====================================================
-   MỞ THIỆP
-===================================================== */
-
-function openInvitation() {
-
-    const opening =
-        document
-            .getElementById("opening");
-
-
-    opening.classList.add("hide");
-
-
-    /* Bắt đầu nhạc */
-
-    startMusic();
-
-
-    /* Hiệu ứng */
-
-    createConfetti();
-
-
-    /* Cuộn nhẹ */
-
-    setTimeout(() => {
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    }, 300);
-
+function toggleMusic(){
+  if(playing){
+    music.pause();
+    playing=false;
+    musicBtn.textContent="▶";
+    disc.classList.remove("play");
+  }else{
+    music.play().then(()=>{
+      playing=true;
+      musicBtn.textContent="❚❚";
+      disc.classList.add("play");
+    });
+  }
 }
 
+const target = new Date("2026-08-23T15:00:00+07:00").getTime();
 
-/* =====================================================
-   MUSIC
-===================================================== */
+function countdown(){
+  const diff = target - Date.now();
+  if(diff<=0){
+    ["days","hours","minutes","seconds"].forEach(id=>document.getElementById(id).textContent="00");
+    return;
+  }
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor(diff%86400000/3600000);
+  const m=Math.floor(diff%3600000/60000);
+  const s=Math.floor(diff%60000/1000);
+  document.getElementById("days").textContent=String(d).padStart(2,"0");
+  document.getElementById("hours").textContent=String(h).padStart(2,"0");
+  document.getElementById("minutes").textContent=String(m).padStart(2,"0");
+  document.getElementById("seconds").textContent=String(s).padStart(2,"0");
+}
+countdown();
+setInterval(countdown,1000);
 
-const music =
-    document.getElementById("music");
-
-
-const musicButton =
-    document.getElementById("musicButton");
-
-
-const musicDisc =
-    document.getElementById("musicDisc");
-
-
-let musicPlaying = false;
-
-
-function startMusic() {
-
-    music.volume = 0.35;
-
-
-    music.play()
-        .then(() => {
-
-            musicPlaying = true;
-
-            musicButton.innerText =
-                "❚❚";
-
-            musicDisc.classList.add(
-                "playing"
-            );
-
-        })
-        .catch(() => {
-
-            /*
-                Một số trình duyệt
-                có thể chặn autoplay.
-
-                Người dùng có thể bấm
-                nút nhạc ở góc màn hình.
-            */
-
-            musicPlaying = false;
-
-        });
-
+function confirmAttendance(){
+  document.getElementById("thanks").classList.add("show");
+  petals(35);
+  localStorage.setItem("graduation-rsvp","yes");
+}
+if(localStorage.getItem("graduation-rsvp")==="yes"){
+  document.getElementById("thanks").classList.add("show");
 }
 
-
-function toggleMusic() {
-
-    if (musicPlaying) {
-
-        music.pause();
-
-        musicPlaying = false;
-
-        musicButton.innerText =
-            "▶";
-
-        musicDisc.classList.remove(
-            "playing"
-        );
-
-    } else {
-
-        music.volume = 0.35;
-
-        music.play()
-            .then(() => {
-
-                musicPlaying = true;
-
-                musicButton.innerText =
-                    "❚❚";
-
-                musicDisc.classList.add(
-                    "playing"
-                );
-
-            })
-            .catch(() => {
-
-                alert(
-                    "Không tìm thấy file nhạc. Hãy kiểm tra music/graduation.mp3"
-                );
-
-            });
-
-    }
-
+async function copyLink(){
+  try{
+    await navigator.clipboard.writeText(location.href);
+    alert("Đã sao chép link thiệp! 🎓");
+  }catch(e){
+    const t=document.createElement("textarea");
+    t.value=location.href;
+    document.body.appendChild(t);
+    t.select();
+    document.execCommand("copy");
+    t.remove();
+    alert("Đã sao chép link thiệp! 🎓");
+  }
 }
 
-
-/* =====================================================
-   COUNTDOWN
-===================================================== */
-
-
-/*
-    =================================================
-    SỬA NGÀY / GIỜ TỐT NGHIỆP Ở ĐÂY
-    =================================================
-
-    Ví dụ:
-
-    September 20, 2026 08:00:00
-
-*/
-
-const graduationDate =
-    new Date(
-        "September 20, 2026 08:00:00"
-    ).getTime();
-
-
-function updateCountdown() {
-
-    const now =
-        new Date().getTime();
-
-
-    const distance =
-        graduationDate - now;
-
-
-    if (distance <= 0) {
-
-        document
-            .getElementById("days")
-            .innerText = "00";
-
-
-        document
-            .getElementById("hours")
-            .innerText = "00";
-
-
-        document
-            .getElementById("minutes")
-            .innerText = "00";
-
-
-        document
-            .getElementById("seconds")
-            .innerText = "00";
-
-
-        return;
-    }
-
-
-    const days =
-        Math.floor(
-            distance /
-            (1000 * 60 * 60 * 24)
-        );
-
-
-    const hours =
-        Math.floor(
-            (
-                distance %
-                (1000 * 60 * 60 * 24)
-            ) /
-            (1000 * 60 * 60)
-        );
-
-
-    const minutes =
-        Math.floor(
-            (
-                distance %
-                (1000 * 60 * 60)
-            ) /
-            (1000 * 60)
-        );
-
-
-    const seconds =
-        Math.floor(
-            (
-                distance %
-                (1000 * 60)
-            ) /
-            1000
-        );
-
-
-    document
-        .getElementById("days")
-        .innerText =
-        String(days)
-            .padStart(2, "0");
-
-
-    document
-        .getElementById("hours")
-        .innerText =
-        String(hours)
-            .padStart(2, "0");
-
-
-    document
-        .getElementById("minutes")
-        .innerText =
-        String(minutes)
-            .padStart(2, "0");
-
-
-    document
-        .getElementById("seconds")
-        .innerText =
-        String(seconds)
-            .padStart(2, "0");
-
+function petals(count){
+  const symbols=["🌸","✨","✦","🎓","🤍"];
+  for(let i=0;i<count;i++){
+    const p=document.createElement("div");
+    p.className="petal";
+    p.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    p.style.left=Math.random()*100+"vw";
+    p.style.fontSize=(12+Math.random()*13)+"px";
+    p.style.animationDuration=(3+Math.random()*4)+"s";
+    p.style.animationDelay=(Math.random()*.8)+"s";
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),8000);
+  }
 }
-
-
-setInterval(
-    updateCountdown,
-    1000
-);
-
-
-updateCountdown();
-
-
-/* =====================================================
-   XÁC NHẬN THAM DỰ
-===================================================== */
-
-function confirmAttendance() {
-
-    const thanks =
-        document
-            .getElementById("thanks");
-
-
-    thanks.classList.add(
-        "show"
-    );
-
-
-    createConfetti();
-
-
-    /*
-        Lưu trạng thái trên
-        trình duyệt của người dùng.
-    */
-
-    localStorage.setItem(
-        "graduationAttendance",
-        "yes"
-    );
-
-}
-
-
-/* =====================================================
-   KIỂM TRA RSVP ĐÃ BẤM CHƯA
-===================================================== */
-
-if (
-    localStorage.getItem(
-        "graduationAttendance"
-    ) === "yes"
-) {
-
-    document
-        .getElementById("thanks")
-        .classList.add("show");
-
-}
-
-
-/* =====================================================
-   COPY LINK
-===================================================== */
-
-async function copyLink() {
-
-    const link =
-        window.location.href;
-
-
-    try {
-
-        await navigator.clipboard.writeText(
-            link
-        );
-
-
-        alert(
-            "Đã sao chép link thiệp! 🎓"
-        );
-
-    } catch (error) {
-
-        /*
-            Fallback cho trình duyệt
-            không hỗ trợ clipboard.
-        */
-
-        const temp =
-            document.createElement("textarea");
-
-
-        temp.value = link;
-
-        document.body.appendChild(temp);
-
-        temp.select();
-
-        document.execCommand("copy");
-
-        temp.remove();
-
-
-        alert(
-            "Đã sao chép link thiệp! 🎓"
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   CONFETTI
-===================================================== */
-
-function createConfetti() {
-
-    const emojis = [
-
-        "🎓",
-        "🎉",
-        "✨",
-        "💜",
-        "🌸",
-        "⭐",
-        "🎊",
-        "❤️"
-
-    ];
-
-
-    for (
-        let i = 0;
-        i < 40;
-        i++
-    ) {
-
-        const element =
-            document.createElement("div");
-
-
-        element.className =
-            "confetti";
-
-
-        element.innerText =
-            emojis[
-                Math.floor(
-                    Math.random()
-                    *
-                    emojis.length
-                )
-            ];
-
-
-        element.style.left =
-            Math.random() *
-            100 +
-            "vw";
-
-
-        element.style.fontSize =
-            (
-                Math.random() *
-                15 +
-                14
-            ) +
-            "px";
-
-
-        element.style.animationDuration =
-            (
-                Math.random() *
-                3 +
-                3
-            ) +
-            "s";
-
-
-        element.style.animationDelay =
-            (
-                Math.random() *
-                .8
-            ) +
-            "s";
-
-
-        document
-            .body
-            .appendChild(element);
-
-
-        setTimeout(
-            () => {
-
-                element.remove();
-
-            },
-            7000
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   CLICK MUSIC PLAYER
-===================================================== */
-
-music.addEventListener(
-    "play",
-    () => {
-
-        musicPlaying = true;
-
-        musicButton.innerText =
-            "❚❚";
-
-        musicDisc.classList.add(
-            "playing"
-        );
-
-    }
-);
-
-
-music.addEventListener(
-    "pause",
-    () => {
-
-        musicPlaying = false;
-
-        musicButton.innerText =
-            "▶";
-
-        musicDisc.classList.remove(
-            "playing"
-        );
-
-    }
-);
-
 </script>
-
 </body>
 </html>
