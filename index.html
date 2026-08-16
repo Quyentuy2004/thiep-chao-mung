@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Thiệp Mời Tốt Nghiệp 🎓</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#faf7ff;
+    color:#292536;
+    overflow-x:hidden;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:#eadfff;
+    filter:blur(100px);
+    top:-200px;
+    left:-200px;
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:450px;
+    height:450px;
+    border-radius:50%;
+    background:#ffe3f3;
+    filter:blur(100px);
+    bottom:-200px;
+    right:-150px;
+    z-index:-1;
+}
+
+/* =========================
+   OPENING ENVELOPE
+========================= */
+
+.opening{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(
+        135deg,
+        #5c3b8c,
+        #8f5db7,
+        #d58ab9
+    );
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:9999;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s;
+}
+
+.opening.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.envelope-container{
+    text-align:center;
+    color:white;
+    padding:30px;
+}
+
+.envelope{
+    width:260px;
+    height:170px;
+
+    background:#fff;
+
+    border-radius:8px;
+
+    margin:0 auto 30px;
+
+    position:relative;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.25);
+
+    animation:
+        envelopeFloat 3s infinite ease-in-out;
+}
+
+.envelope::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    border-left:130px solid transparent;
+    border-right:130px solid transparent;
+    border-top:90px solid #eee;
+
+    z-index:2;
+}
+
+.envelope::after{
+    content:"";
+
+    position:absolute;
+
+    bottom:0;
+    left:0;
+
+    border-left:130px solid #e8d8ef;
+    border-top:85px solid transparent;
+    border-bottom:85px solid transparent;
+}
+
+.seal{
+    position:absolute;
+
+    width:60px;
+    height:60px;
+
+    background:#b95c91;
+
+    border-radius:50%;
+
+    left:50%;
+    top:55px;
+
+    transform:translateX(-50%);
+
+    z-index:5;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:28px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.2);
+}
+
+.opening h1{
+    font-size:32px;
+    margin-bottom:12px;
+}
+
+.opening p{
+    opacity:.9;
+    margin-bottom:25px;
+}
+
+.open-button{
+    border:none;
+    background:white;
+    color:#71469b;
+
+    padding:15px 35px;
+
+    border-radius:50px;
+
+    font-size:17px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.2);
+
+    transition:.3s;
+}
+
+.open-button:hover{
+    transform:scale(1.06);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:40px 20px;
+}
+
+.hero-small{
+    letter-spacing:5px;
+    font-size:13px;
+    color:#8b62a9;
+
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-family:Georgia,serif;
+
+    font-size:
+        clamp(48px,9vw,90px);
+
+    line-height:1.05;
+
+    background:
+        linear-gradient(
+            90deg,
+            #634294,
+            #b85f91
+        );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero-subtitle{
+    font-size:22px;
+    margin-top:20px;
+}
+
+.graduate-name{
+    color:#b75c91;
+    font-weight:bold;
+}
+
+.cap{
+    font-size:90px;
+
+    animation:
+        floating 3s ease-in-out infinite;
+
+    margin-bottom:10px;
+}
+
+.scroll{
+    margin-top:70px;
+    color:#8b7b99;
+    font-size:13px;
+}
+
+.scroll span{
+    display:block;
+    font-size:25px;
+    animation:
+        bounce 1.5s infinite;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.container{
+    width:min(900px,92%);
+    margin:auto;
+}
+
+.card{
+    background:
+        rgba(255,255,255,.82);
+
+    backdrop-filter:
+        blur(15px);
+
+    border:
+        1px solid rgba(255,255,255,.8);
+
+    border-radius:30px;
+
+    padding:
+        45px 30px;
+
+    margin-bottom:35px;
+
+    text-align:center;
+
+    box-shadow:
+        0 20px 60px rgba(95,65,120,.10);
+}
+
+.card h2{
+    font-family:Georgia,serif;
+
+    color:#62438d;
+
+    font-size:30px;
+
+    margin-bottom:20px;
+}
+
+.message{
+    font-size:17px;
+    line-height:1.9;
+}
+
+/* =========================
+   PHOTO
+========================= */
+
+.photo-frame{
+    width:250px;
+    height:300px;
+
+    margin:
+        25px auto;
+
+    padding:8px;
+
+    background:white;
+
+    border-radius:20px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.15);
+
+    transform:rotate(-2deg);
+}
+
+.photo-frame img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:15px;
+}
+
+.person-name{
+    font-family:Georgia,serif;
+    font-size:28px;
+
+    color:#62438d;
+}
+
+/* =========================
+   EVENT
+========================= */
+
+.event-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:15px;
+
+    margin-top:25px;
+}
+
+.event{
+    background:#f8f3ff;
+
+    padding:22px 12px;
+
+    border-radius:20px;
+}
+
+.event-icon{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.event strong{
+    color:#67468d;
+    display:block;
+    margin-bottom:6px;
+}
+
+.event p{
+    font-size:15px;
+}
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+.countdown{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+
+    margin-top:25px;
+}
+
+.time{
+    min-width:80px;
+
+    padding:15px 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #65448e,
+            #a65f9b
+        );
+
+    color:white;
+
+    border-radius:18px;
+}
+
+.time-number{
+    font-size:30px;
+    font-weight:bold;
+}
+
+.time-label{
+    font-size:11px;
+    opacity:.8;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.button{
+    display:inline-block;
+
+    margin-top:25px;
+
+    padding:
+        15px 30px;
+
+    border:none;
+
+    border-radius:50px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #684595,
+            #b95f91
+        );
+
+    font-size:16px;
+    font-weight:bold;
+
+    text-decoration:none;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 10px 25px rgba(100,65,140,.25);
+
+    transition:.3s;
+}
+
+.button:hover{
+    transform:
+        translateY(-3px)
+        scale(1.02);
+}
+
+/* =========================
+   PERSONAL INVITATION
+========================= */
+
+.guest{
+    font-size:25px;
+
+    font-family:Georgia,serif;
+
+    color:#b25c91;
+
+    margin:15px 0;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+
+    padding:
+        30px 20px 70px;
+
+    color:#81768a;
+
+    font-size:14px;
+}
+
+/* =========================
+   CONFETTI
+========================= */
+
+.confetti{
+    position:fixed;
+
+    top:-30px;
+
+    z-index:10000;
+
+    pointer-events:none;
+
+    animation:
+        confettiFall linear forwards;
+}
+
+@keyframes confettiFall{
+
+    to{
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+    }
+
+}
+
+@keyframes floating{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+
+}
+
+@keyframes envelopeFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+}
+
+@keyframes bounce{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(8px);
+    }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:650px){
+
+    .event-grid{
+        grid-template-columns:1fr;
+    }
+
+    .countdown{
+        gap:6px;
+    }
+
+    .time{
+        min-width:65px;
+        padding:12px 5px;
+    }
+
+    .time-number{
+        font-size:23px;
+    }
+
+    .hero-subtitle{
+        font-size:18px;
+    }
+
+    .card{
+        padding:35px 20px;
+    }
+
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     OPENING
+========================= -->
+
+<div class="opening" id="opening">
+
+    <div class="envelope-container">
+
+        <div class="envelope">
+
+            <div class="seal">
+                🎓
+            </div>
+
+        </div>
+
+        <h1>Một lời mời đặc biệt 💌</h1>
+
+        <p>
+            Dành riêng cho bạn
+        </p>
+
+        <button
+            class="open-button"
+            onclick="openInvitation()">
+
+            Mở thiệp 🎓
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="cap">
+        🎓
+    </div>
+
+    <div class="hero-small">
+        GRADUATION CEREMONY · 2026
+    </div>
+
+    <h1>
+        Lễ Tốt Nghiệp
+    </h1>
+
+    <p class="hero-subtitle">
+
+        Trân trọng kính mời
+
+        <br>
+
+        <span
+            class="graduate-name"
+            id="heroGuest">
+
+            Bạn
+
+        </span>
+
+        đến chung vui cùng mình ❤️
+
+    </p>
+
+    <div class="scroll">
+        Kéo xuống để mở thiệp
+        <span>↓</span>
+    </div>
+
+</section>
+
+
+<div class="container">
+
+
+<!-- =========================
+     INVITATION
+========================= -->
+
+<section class="card">
+
+    <h2>
+        💌 Thân gửi
+    </h2>
+
+    <div
+        class="guest"
+        id="guestName">
+
+        Bạn thân mến
+
+    </div>
+
+    <p class="message">
+
+        Sau một hành trình dài với rất nhiều
+        kỷ niệm, thử thách và những ngày tháng
+        không thể quên...
+
+        <br><br>
+
+        Cuối cùng mình cũng đã đi đến
+        ngày đặc biệt này.
+
+        <br><br>
+
+        Mình rất vui nếu bạn có thể đến,
+        cùng mình đánh dấu khoảnh khắc
+        <strong>tốt nghiệp</strong>
+        và mở đầu cho một hành trình mới.
+
+        <br><br>
+
+        Sự có mặt của bạn sẽ khiến ngày này
+        trở nên đặc biệt hơn rất nhiều. ❤️
+
+    </p>
+
+</section>
+
+
+<!-- =========================
+     GRADUATE
+========================= -->
+
+<section class="card">
+
+    <h2>
+        🎓 Người tốt nghiệp
+    </h2>
+
+    <div class="photo-frame">
+
+        <!-- THAY ẢNH CỦA BẠN -->
+        <img
+            src="images/avatar.jpg"
+            alt="Graduation">
+
+    </div>
+
+    <div class="person-name">
+        NGUYỄN VĂN A
+    </div>
+
+    <p style="margin-top:10px;">
+        Class of 2026
+    </p>
+
+</section>
+
+
+<!-- =========================
+     EVENT
+========================= -->
+
+<section class="card">
+
+    <h2>
+        📅 Thông tin buổi lễ
+    </h2>
+
+    <div class="event-grid">
+
+        <div class="event">
+
+            <div class="event-icon">
+                📅
+            </div>
+
+            <strong>
+                Ngày
+            </strong>
+
+            <p>
+                20/09/2026
+            </p>
+
+        </div>
+
+
+        <div class="event">
+
+            <div class="event-icon">
+                ⏰
+            </div>
+
+            <strong>
+                Thời gian
+            </strong>
+
+            <p>
+                08:00 AM
+            </p>
+
+        </div>
+
+
+        <div class="event">
+
+            <div class="event-icon">
+                📍
+            </div>
+
+            <strong>
+                Địa điểm
+            </strong>
+
+            <p>
+                VinUniversity
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <a
+        href="https://maps.google.com/?q=VinUniversity"
+        target="_blank"
+        class="button">
+
+        📍 Mở Google Maps
+
+    </a>
+
+</section>
+
+
+<!-- =========================
+     COUNTDOWN
+========================= -->
+
+<section class="card">
+
+    <h2>
+        ⏳ Đếm ngược
+    </h2>
+
+    <p>
+        Đến ngày chúng ta cùng gặp nhau
+    </p>
+
+
+    <div class="countdown">
+
+        <div class="time">
+
+            <div
+                class="time-number"
+                id="days">
+                00
+            </div>
+
+            <div class="time-label">
+                NGÀY
+            </div>
+
+        </div>
+
+
+        <div class="time">
+
+            <div
+                class="time-number"
+                id="hours">
+                00
+            </div>
+
+            <div class="time-label">
+                GIỜ
+            </div>
+
+        </div>
+
+
+        <div class="time">
+
+            <div
+                class="time-number"
+                id="minutes">
+                00
+            </div>
+
+            <div class="time-label">
+                PHÚT
+            </div>
+
+        </div>
+
+
+        <div class="time">
+
+            <div
+                class="time-number"
+                id="seconds">
+                00
+            </div>
+
+            <div class="time-label">
+                GIÂY
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONFIRM
+========================= -->
+
+<section class="card">
+
+    <h2>
+        ❤️ Bạn sẽ đến chứ?
+    </h2>
+
+    <p>
+        Mình rất mong được gặp bạn
+        trong ngày đặc biệt này.
+    </p>
+
+
+    <button
+        class="button"
+        onclick="confirmAttendance()">
+
+        🎉 Mình sẽ tham dự
+
+    </button>
+
+
+    <div
+        id="thanks"
+        style="
+        display:none;
+        margin-top:20px;
+        color:#a75b91;
+        font-weight:bold;
+        ">
+
+        Tuyệt vời! Hẹn gặp bạn tại lễ tốt nghiệp nhé! ❤️🎓
+
+    </div>
+
+</section>
+
+
+</div>
+
+
+<footer>
+
+    🎓 Graduation Day 2026
+
+    <br><br>
+
+    Made with ❤️
+
+</footer>
+
+
+<!-- =========================
+     MUSIC
+========================= -->
+
+<audio
+    id="music"
+    loop>
+
+    <!--
+    Đặt file nhạc vào:
+
+    music/graduation.mp3
+    -->
+
+    <source
+        src="music/graduation.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+<script>
+
+/* ==================================
+   ĐỌC TÊN TỪ URL
+================================== */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+let guest =
+    params.get("name");
+
+
+/*
+    Nếu link:
+
+    ?name=Minh
+
+    thì guest = Minh
+*/
+
+
+if(guest){
+
+    guest =
+        decodeURIComponent(guest);
+
+    document.getElementById(
+        "guestName"
+    ).innerText =
+        guest;
+
+    document.getElementById(
+        "heroGuest"
+    ).innerText =
+        guest;
+
+}
+
+
+/* ==================================
+   MỞ THIỆP
+================================== */
+
+function openInvitation(){
+
+    document
+        .getElementById("opening")
+        .classList.add("hide");
+
+
+    /* phát nhạc */
+
+    const music =
+        document.getElementById("music");
+
+    music.volume = 0.35;
+
+    music.play().catch(
+        () => {}
+    );
+
+
+    createConfetti();
+
+}
+
+
+/* ==================================
+   COUNTDOWN
+================================== */
+
+
+/*
+   SỬA NGÀY TỐT NGHIỆP Ở ĐÂY
+*/
+
+const graduationDate =
+    new Date(
+        "September 20, 2026 08:00:00"
+    ).getTime();
+
+
+function updateCountdown(){
+
+    const now =
+        new Date().getTime();
+
+
+    const distance =
+        graduationDate - now;
+
+
+    if(distance <= 0){
+
+        document.getElementById(
+            "days"
+        ).innerText="00";
+
+        document.getElementById(
+            "hours"
+        ).innerText="00";
+
+        document.getElementById(
+            "minutes"
+        ).innerText="00";
+
+        document.getElementById(
+            "seconds"
+        ).innerText="00";
+
+        return;
+
+    }
+
+
+    const days =
+        Math.floor(
+            distance /
+            (1000*60*60*24)
+        );
+
+
+    const hours =
+        Math.floor(
+            (distance %
+            (1000*60*60*24)) /
+            (1000*60*60)
+        );
+
+
+    const minutes =
+        Math.floor(
+            (distance %
+            (1000*60*60)) /
+            (1000*60)
+        );
+
+
+    const seconds =
+        Math.floor(
+            (distance %
+            (1000*60)) /
+            1000
+        );
+
+
+    document.getElementById(
+        "days"
+    ).innerText =
+        String(days).padStart(2,"0");
+
+
+    document.getElementById(
+        "hours"
+    ).innerText =
+        String(hours).padStart(2,"0");
+
+
+    document.getElementById(
+        "minutes"
+    ).innerText =
+        String(minutes).padStart(2,"0");
+
+
+    document.getElementById(
+        "seconds"
+    ).innerText =
+        String(seconds).padStart(2,"0");
+
+}
+
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+updateCountdown();
+
+
+/* ==================================
+   CONFIRM
+================================== */
+
+function confirmAttendance(){
+
+    document.getElementById(
+        "thanks"
+    ).style.display =
+        "block";
+
+    createConfetti();
+
+}
+
+
+/* ==================================
+   CONFETTI
+================================== */
+
+function createConfetti(){
+
+    const emojis = [
+        "🎓",
+        "🎉",
+        "✨",
+        "💜",
+        "🌸",
+        "⭐"
+    ];
+
+
+    for(
+        let i=0;
+        i<35;
+        i++
+    ){
+
+        const element =
+            document.createElement("div");
+
+
+        element.className =
+            "confetti";
+
+
+        element.innerText =
+            emojis[
+                Math.floor(
+                    Math.random()
+                    *
+                    emojis.length
+                )
+            ];
+
+
+        element.style.left =
+            Math.random()*100 +
+            "vw";
+
+
+        element.style.fontSize =
+            (Math.random()*15+15)
+            + "px";
+
+
+        element.style.animationDuration =
+            (Math.random()*3+3)
+            + "s";
+
+
+        document.body.appendChild(
+            element
+        );
+
+
+        setTimeout(
+            ()=>{
+                element.remove();
+            },
+            6500
+        );
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
