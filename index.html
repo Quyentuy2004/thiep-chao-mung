@@ -1,627 +1,1341 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Thiệp Mời Tốt Nghiệp 🎓</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:"Segoe UI",Arial,sans-serif;
-    background:#faf7ff;
-    color:#292536;
-    overflow-x:hidden;
-}
-
-/* =========================
-   BACKGROUND
-========================= */
-
-body::before{
-    content:"";
-    position:fixed;
-    width:500px;
-    height:500px;
-    border-radius:50%;
-    background:#eadfff;
-    filter:blur(100px);
-    top:-200px;
-    left:-200px;
-    z-index:-1;
-}
-
-body::after{
-    content:"";
-    position:fixed;
-    width:450px;
-    height:450px;
-    border-radius:50%;
-    background:#ffe3f3;
-    filter:blur(100px);
-    bottom:-200px;
-    right:-150px;
-    z-index:-1;
-}
-
-/* =========================
-   OPENING ENVELOPE
-========================= */
-
-.opening{
-    position:fixed;
-    inset:0;
-    background:linear-gradient(
-        135deg,
-        #5c3b8c,
-        #8f5db7,
-        #d58ab9
-    );
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    z-index:9999;
-
-    transition:
-        opacity 1s ease,
-        visibility 1s;
-}
-
-.opening.hide{
-    opacity:0;
-    visibility:hidden;
-}
+    <meta charset="UTF-8">
 
-.envelope-container{
-    text-align:center;
-    color:white;
-    padding:30px;
-}
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-.envelope{
-    width:260px;
-    height:170px;
+    <meta
+        name="description"
+        content="Thiệp mời lễ tốt nghiệp"
+    >
 
-    background:#fff;
+    <title>Lễ Tốt Nghiệp 🎓</title>
 
-    border-radius:8px;
 
-    margin:0 auto 30px;
+    <!-- =====================================================
+         GOOGLE FONT - HỖ TRỢ TIẾNG VIỆT
+    ====================================================== -->
 
-    position:relative;
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.25);
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
-    animation:
-        envelopeFloat 3s infinite ease-in-out;
-}
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
 
-.envelope::before{
-    content:"";
 
-    position:absolute;
+    <style>
 
-    top:0;
-    left:0;
+        /* =====================================================
+           RESET
+        ====================================================== */
 
-    border-left:130px solid transparent;
-    border-right:130px solid transparent;
-    border-top:90px solid #eee;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    z-index:2;
-}
 
-.envelope::after{
-    content:"";
+        html {
+            scroll-behavior: smooth;
+        }
 
-    position:absolute;
 
-    bottom:0;
-    left:0;
+        body {
 
-    border-left:130px solid #e8d8ef;
-    border-top:85px solid transparent;
-    border-bottom:85px solid transparent;
-}
+            font-family:
+                "Be Vietnam Pro",
+                Arial,
+                sans-serif;
 
-.seal{
-    position:absolute;
+            background:
+                linear-gradient(
+                    135deg,
+                    #faf7ff 0%,
+                    #f7f1ff 50%,
+                    #fff7fb 100%
+                );
 
-    width:60px;
-    height:60px;
+            color: #302b38;
 
-    background:#b95c91;
+            overflow-x: hidden;
+        }
 
-    border-radius:50%;
 
-    left:50%;
-    top:55px;
+        /* =====================================================
+           BACKGROUND DECORATION
+        ====================================================== */
 
-    transform:translateX(-50%);
+        body::before {
 
-    z-index:5;
+            content: "";
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+            position: fixed;
 
-    font-size:28px;
+            width: 450px;
+            height: 450px;
 
-    box-shadow:
-        0 5px 20px rgba(0,0,0,.2);
-}
+            border-radius: 50%;
 
-.opening h1{
-    font-size:32px;
-    margin-bottom:12px;
-}
+            background: #e9dcff;
 
-.opening p{
-    opacity:.9;
-    margin-bottom:25px;
-}
+            filter: blur(110px);
 
-.open-button{
-    border:none;
-    background:white;
-    color:#71469b;
+            top: -220px;
+            left: -180px;
 
-    padding:15px 35px;
+            opacity: .7;
 
-    border-radius:50px;
+            z-index: -2;
+        }
 
-    font-size:17px;
-    font-weight:bold;
 
-    cursor:pointer;
+        body::after {
 
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.2);
+            content: "";
 
-    transition:.3s;
-}
+            position: fixed;
 
-.open-button:hover{
-    transform:scale(1.06);
-}
+            width: 450px;
+            height: 450px;
 
-/* =========================
-   HERO
-========================= */
+            border-radius: 50%;
 
-.hero{
-    min-height:100vh;
+            background: #ffddea;
 
-    display:flex;
-    flex-direction:column;
+            filter: blur(110px);
 
-    justify-content:center;
-    align-items:center;
+            bottom: -220px;
+            right: -180px;
 
-    text-align:center;
+            opacity: .65;
 
-    padding:40px 20px;
-}
+            z-index: -2;
+        }
 
-.hero-small{
-    letter-spacing:5px;
-    font-size:13px;
-    color:#8b62a9;
 
-    margin-bottom:20px;
-}
+        /* =====================================================
+           OPENING SCREEN
+        ====================================================== */
 
-.hero h1{
-    font-family:Georgia,serif;
+        .opening {
 
-    font-size:
-        clamp(48px,9vw,90px);
+            position: fixed;
 
-    line-height:1.05;
+            inset: 0;
 
-    background:
-        linear-gradient(
-            90deg,
-            #634294,
-            #b85f91
-        );
+            display: flex;
 
-    -webkit-background-clip:text;
-    color:transparent;
-}
+            align-items: center;
+            justify-content: center;
 
-.hero-subtitle{
-    font-size:22px;
-    margin-top:20px;
-}
+            background:
+                linear-gradient(
+                    135deg,
+                    #563685,
+                    #8050a5,
+                    #c56d9e
+                );
 
-.graduate-name{
-    color:#b75c91;
-    font-weight:bold;
-}
+            z-index: 99999;
 
-.cap{
-    font-size:90px;
+            transition:
+                opacity 1s ease,
+                visibility 1s ease;
+        }
 
-    animation:
-        floating 3s ease-in-out infinite;
 
-    margin-bottom:10px;
-}
+        .opening.hide {
 
-.scroll{
-    margin-top:70px;
-    color:#8b7b99;
-    font-size:13px;
-}
+            opacity: 0;
 
-.scroll span{
-    display:block;
-    font-size:25px;
-    animation:
-        bounce 1.5s infinite;
-}
+            visibility: hidden;
 
-/* =========================
-   SECTIONS
-========================= */
+            pointer-events: none;
+        }
 
-.container{
-    width:min(900px,92%);
-    margin:auto;
-}
 
-.card{
-    background:
-        rgba(255,255,255,.82);
+        .opening-content {
 
-    backdrop-filter:
-        blur(15px);
+            width: min(420px, 90%);
 
-    border:
-        1px solid rgba(255,255,255,.8);
+            text-align: center;
 
-    border-radius:30px;
+            color: white;
+        }
 
-    padding:
-        45px 30px;
 
-    margin-bottom:35px;
+        /* =====================================================
+           ENVELOPE
+        ====================================================== */
 
-    text-align:center;
+        .envelope {
 
-    box-shadow:
-        0 20px 60px rgba(95,65,120,.10);
-}
+            position: relative;
 
-.card h2{
-    font-family:Georgia,serif;
+            width: 270px;
+            height: 180px;
 
-    color:#62438d;
+            margin:
+                0 auto 30px;
 
-    font-size:30px;
+            background: #ffffff;
 
-    margin-bottom:20px;
-}
+            border-radius: 8px;
 
-.message{
-    font-size:17px;
-    line-height:1.9;
-}
+            box-shadow:
+                0 30px 70px rgba(0, 0, 0, .28);
 
-/* =========================
-   PHOTO
-========================= */
+            animation:
+                envelopeFloat 3s ease-in-out infinite;
+        }
 
-.photo-frame{
-    width:250px;
-    height:300px;
 
-    margin:
-        25px auto;
+        .envelope-top {
 
-    padding:8px;
+            position: absolute;
 
-    background:white;
+            left: 0;
+            top: 0;
 
-    border-radius:20px;
+            width: 0;
+            height: 0;
 
-    box-shadow:
-        0 15px 40px rgba(0,0,0,.15);
+            border-left:
+                135px solid transparent;
 
-    transform:rotate(-2deg);
-}
+            border-right:
+                135px solid transparent;
 
-.photo-frame img{
-    width:100%;
-    height:100%;
+            border-top:
+                95px solid #e6d9ed;
 
-    object-fit:cover;
+            z-index: 3;
+        }
 
-    border-radius:15px;
-}
 
-.person-name{
-    font-family:Georgia,serif;
-    font-size:28px;
+        .envelope-left {
 
-    color:#62438d;
-}
+            position: absolute;
 
-/* =========================
-   EVENT
-========================= */
+            left: 0;
+            bottom: 0;
 
-.event-grid{
-    display:grid;
+            width: 0;
+            height: 0;
 
-    grid-template-columns:
-        repeat(3,1fr);
+            border-top:
+                90px solid transparent;
 
-    gap:15px;
+            border-bottom:
+                90px solid transparent;
 
-    margin-top:25px;
-}
+            border-left:
+                135px solid #eee2f4;
+        }
 
-.event{
-    background:#f8f3ff;
 
-    padding:22px 12px;
+        .envelope-right {
 
-    border-radius:20px;
-}
+            position: absolute;
 
-.event-icon{
-    font-size:32px;
-    margin-bottom:10px;
-}
+            right: 0;
+            bottom: 0;
 
-.event strong{
-    color:#67468d;
-    display:block;
-    margin-bottom:6px;
-}
+            width: 0;
+            height: 0;
 
-.event p{
-    font-size:15px;
-}
+            border-top:
+                90px solid transparent;
 
-/* =========================
-   COUNTDOWN
-========================= */
+            border-bottom:
+                90px solid transparent;
 
-.countdown{
-    display:flex;
-    justify-content:center;
-    gap:12px;
+            border-right:
+                135px solid #e7d8ef;
+        }
 
-    margin-top:25px;
-}
 
-.time{
-    min-width:80px;
+        .seal {
 
-    padding:15px 10px;
+            position: absolute;
 
-    background:
-        linear-gradient(
-            135deg,
-            #65448e,
-            #a65f9b
-        );
+            left: 50%;
+            top: 55px;
 
-    color:white;
+            transform:
+                translateX(-50%);
 
-    border-radius:18px;
-}
+            width: 62px;
+            height: 62px;
 
-.time-number{
-    font-size:30px;
-    font-weight:bold;
-}
+            display: flex;
 
-.time-label{
-    font-size:11px;
-    opacity:.8;
-}
+            justify-content: center;
+            align-items: center;
 
-/* =========================
-   BUTTON
-========================= */
+            background:
+                linear-gradient(
+                    135deg,
+                    #b6558b,
+                    #cf6da1
+                );
 
-.button{
-    display:inline-block;
+            border-radius: 50%;
 
-    margin-top:25px;
+            z-index: 5;
 
-    padding:
-        15px 30px;
+            font-size: 29px;
 
-    border:none;
+            box-shadow:
+                0 8px 20px rgba(0,0,0,.2);
+        }
 
-    border-radius:50px;
 
-    color:white;
+        .opening h1 {
 
-    background:
-        linear-gradient(
-            135deg,
-            #684595,
-            #b95f91
-        );
+            font-family:
+                "Playfair Display",
+                Georgia,
+                serif;
 
-    font-size:16px;
-    font-weight:bold;
+            font-size:
+                clamp(27px, 6vw, 35px);
 
-    text-decoration:none;
+            margin-bottom: 10px;
+        }
 
-    cursor:pointer;
 
-    box-shadow:
-        0 10px 25px rgba(100,65,140,.25);
+        .opening p {
 
-    transition:.3s;
-}
+            font-size: 14px;
 
-.button:hover{
-    transform:
-        translateY(-3px)
-        scale(1.02);
-}
+            opacity: .9;
 
-/* =========================
-   PERSONAL INVITATION
-========================= */
+            margin-bottom: 25px;
+        }
 
-.guest{
-    font-size:25px;
 
-    font-family:Georgia,serif;
+        .open-button {
 
-    color:#b25c91;
+            border: none;
 
-    margin:15px 0;
-}
+            padding:
+                15px 35px;
 
-/* =========================
-   FOOTER
-========================= */
+            border-radius: 50px;
 
-footer{
-    text-align:center;
+            background: white;
 
-    padding:
-        30px 20px 70px;
+            color: #704696;
 
-    color:#81768a;
+            font-family:
+                "Be Vietnam Pro",
+                sans-serif;
 
-    font-size:14px;
-}
+            font-size: 16px;
 
-/* =========================
-   CONFETTI
-========================= */
+            font-weight: 700;
 
-.confetti{
-    position:fixed;
+            cursor: pointer;
 
-    top:-30px;
+            box-shadow:
+                0 10px 30px rgba(0,0,0,.22);
 
-    z-index:10000;
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
 
-    pointer-events:none;
 
-    animation:
-        confettiFall linear forwards;
-}
+        .open-button:hover {
 
-@keyframes confettiFall{
+            transform:
+                translateY(-3px)
+                scale(1.03);
 
-    to{
-        transform:
-            translateY(110vh)
-            rotate(720deg);
-    }
+            box-shadow:
+                0 15px 35px rgba(0,0,0,.25);
+        }
 
-}
 
-@keyframes floating{
+        /* =====================================================
+           HERO
+        ====================================================== */
 
-    0%,100%{
-        transform:translateY(0);
-    }
+        .hero {
 
-    50%{
-        transform:translateY(-15px);
-    }
+            min-height: 100vh;
 
-}
+            display: flex;
 
-@keyframes envelopeFloat{
+            flex-direction: column;
 
-    0%,100%{
-        transform:translateY(0);
-    }
+            justify-content: center;
 
-    50%{
-        transform:translateY(-12px);
-    }
+            align-items: center;
 
-}
+            text-align: center;
 
-@keyframes bounce{
+            padding:
+                50px 20px;
+        }
 
-    0%,100%{
-        transform:translateY(0);
-    }
 
-    50%{
-        transform:translateY(8px);
-    }
+        .graduation-cap {
 
-}
+            font-size:
+                clamp(65px, 12vw, 100px);
 
-/* =========================
-   MOBILE
-========================= */
+            margin-bottom: 20px;
 
-@media(max-width:650px){
+            animation:
+                floating 3s ease-in-out infinite;
+        }
 
-    .event-grid{
-        grid-template-columns:1fr;
-    }
 
-    .countdown{
-        gap:6px;
-    }
+        .hero-label {
 
-    .time{
-        min-width:65px;
-        padding:12px 5px;
-    }
+            font-size: 13px;
 
-    .time-number{
-        font-size:23px;
-    }
+            letter-spacing: 5px;
 
-    .hero-subtitle{
-        font-size:18px;
-    }
+            color: #8560a3;
 
-    .card{
-        padding:35px 20px;
-    }
+            font-weight: 600;
 
-}
-</style>
+            margin-bottom: 18px;
+        }
+
+
+        .hero h1 {
+
+            font-family:
+                "Playfair Display",
+                Georgia,
+                serif;
+
+            font-size:
+                clamp(48px, 10vw, 90px);
+
+            line-height: 1.1;
+
+            font-weight: 800;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #604092,
+                    #9d5494,
+                    #bf6195
+                );
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            color: transparent;
+
+            margin-bottom: 25px;
+        }
+
+
+        .hero-subtitle {
+
+            font-size:
+                clamp(17px, 4vw, 22px);
+
+            line-height: 1.8;
+        }
+
+
+        .guest-name {
+
+            color: #b7588d;
+
+            font-weight: 800;
+        }
+
+
+        .heart {
+
+            display: inline-block;
+
+            animation:
+                heartBeat 1.3s infinite;
+        }
+
+
+        .divider {
+
+            width: 90px;
+
+            height: 3px;
+
+            margin:
+                25px auto;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #7950a1,
+                    #c36496
+                );
+        }
+
+
+        .scroll-hint {
+
+            margin-top: 70px;
+
+            color: #8c8093;
+
+            font-size: 13px;
+        }
+
+
+        .scroll-arrow {
+
+            display: block;
+
+            margin-top: 8px;
+
+            font-size: 24px;
+
+            animation:
+                bounce 1.5s infinite;
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+        ====================================================== */
+
+        .container {
+
+            width:
+                min(900px, 92%);
+
+            margin:
+                0 auto;
+        }
+
+
+        /* =====================================================
+           CARD
+        ====================================================== */
+
+        .card {
+
+            position: relative;
+
+            background:
+                rgba(255,255,255,.86);
+
+            backdrop-filter:
+                blur(15px);
+
+            -webkit-backdrop-filter:
+                blur(15px);
+
+            border:
+                1px solid rgba(255,255,255,.9);
+
+            border-radius: 28px;
+
+            padding:
+                45px 30px;
+
+            margin-bottom: 35px;
+
+            text-align: center;
+
+            box-shadow:
+                0 20px 60px
+                rgba(90,60,120,.10);
+        }
+
+
+        .card h2 {
+
+            font-family:
+                "Playfair Display",
+                Georgia,
+                serif;
+
+            color: #62418e;
+
+            font-size:
+                clamp(26px, 5vw, 32px);
+
+            line-height: 1.3;
+
+            margin-bottom: 20px;
+        }
+
+
+        .card-text {
+
+            font-size: 17px;
+
+            line-height: 1.9;
+        }
+
+
+        /* =====================================================
+           PERSONAL INVITATION
+        ====================================================== */
+
+        .guest-display {
+
+            font-family:
+                "Playfair Display",
+                Georgia,
+                serif;
+
+            font-size: 27px;
+
+            font-weight: 700;
+
+            color: #b65b90;
+
+            margin:
+                10px 0 22px;
+        }
+
+
+        /* =====================================================
+           PHOTO
+        ====================================================== */
+
+        .photo-frame {
+
+            width:
+                min(270px, 75vw);
+
+            height:
+                min(330px, 92vw);
+
+            margin:
+                25px auto;
+
+            padding: 8px;
+
+            background: white;
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 18px 45px
+                rgba(0,0,0,.16);
+
+            transform:
+                rotate(-1.5deg);
+
+            transition:
+                transform .3s ease;
+        }
+
+
+        .photo-frame:hover {
+
+            transform:
+                rotate(0deg)
+                scale(1.02);
+        }
+
+
+        .photo-frame img {
+
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            border-radius: 16px;
+        }
+
+
+        .graduate-name {
+
+            font-family:
+                "Playfair Display",
+                Georgia,
+                serif;
+
+            color: #60408e;
+
+            font-size: 29px;
+
+            font-weight: 700;
+        }
+
+
+        .class-year {
+
+            margin-top: 8px;
+
+            color: #817487;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           EVENT INFORMATION
+        ====================================================== */
+
+        .event-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+            margin-top: 25px;
+        }
+
+
+        .event-item {
+
+            padding: 22px 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f8f2ff,
+                    #fff5fa
+                );
+
+            border-radius: 20px;
+
+            transition:
+                transform .25s ease;
+        }
+
+
+        .event-item:hover {
+
+            transform:
+                translateY(-4px);
+        }
+
+
+        .event-icon {
+
+            font-size: 32px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .event-item strong {
+
+            display: block;
+
+            color: #67468e;
+
+            font-size: 15px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .event-item p {
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           BUTTON
+        ====================================================== */
+
+        .button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            margin-top: 25px;
+
+            padding:
+                14px 27px;
+
+            border: none;
+
+            border-radius: 50px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #654392,
+                    #b65b91
+                );
+
+            color: white;
+
+            text-decoration: none;
+
+            font-family:
+                "Be Vietnam Pro",
+                sans-serif;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 25px
+                rgba(100,65,140,.23);
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
+
+
+        .button:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 15px 30px
+                rgba(100,65,140,.28);
+        }
+
+
+        /* =====================================================
+           COUNTDOWN
+        ====================================================== */
+
+        .countdown {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            margin-top: 25px;
+        }
+
+
+        .time-box {
+
+            min-width: 80px;
+
+            padding:
+                15px 8px;
+
+            border-radius: 18px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #62418d,
+                    #ad5c96
+                );
+
+            box-shadow:
+                0 8px 20px
+                rgba(90,60,120,.15);
+        }
+
+
+        .time-number {
+
+            font-size: 29px;
+
+            font-weight: 800;
+
+            line-height: 1.2;
+        }
+
+
+        .time-label {
+
+            margin-top: 5px;
+
+            font-size: 10px;
+
+            letter-spacing: 1px;
+
+            opacity: .85;
+        }
+
+
+        /* =====================================================
+           MUSIC PLAYER
+        ====================================================== */
+
+        .music-player {
+
+            position: fixed;
+
+            right: 20px;
+            bottom: 20px;
+
+            z-index: 5000;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding:
+                10px 15px 10px 10px;
+
+            border-radius: 50px;
+
+            background:
+                rgba(255,255,255,.92);
+
+            backdrop-filter:
+                blur(12px);
+
+            box-shadow:
+                0 10px 30px
+                rgba(50,30,70,.15);
+
+            border:
+                1px solid rgba(255,255,255,.8);
+        }
+
+
+        .music-button {
+
+            width: 42px;
+            height: 42px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #654392,
+                    #b65b91
+                );
+
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 16px;
+        }
+
+
+        .music-disc {
+
+            width: 32px;
+            height: 32px;
+
+            border-radius: 50%;
+
+            background:
+                repeating-radial-gradient(
+                    circle,
+                    #222 0px,
+                    #222 2px,
+                    #555 3px,
+                    #222 4px
+                );
+
+            animation:
+                spin 3s linear infinite;
+
+            animation-play-state: paused;
+        }
+
+
+        .music-disc.playing {
+
+            animation-play-state:
+                running;
+        }
+
+
+        .music-text {
+
+            font-size: 11px;
+
+            max-width: 120px;
+
+            overflow: hidden;
+
+            white-space: nowrap;
+
+            text-overflow: ellipsis;
+        }
+
+
+        /* =====================================================
+           RSVP
+        ====================================================== */
+
+        .thanks {
+
+            display: none;
+
+            margin-top: 20px;
+
+            padding: 15px;
+
+            border-radius: 15px;
+
+            background: #f7efff;
+
+            color: #754a99;
+
+            font-weight: 700;
+
+            line-height: 1.6;
+        }
+
+
+        .thanks.show {
+
+            display: block;
+
+            animation:
+                fadeUp .5s ease;
+        }
+
+
+        /* =====================================================
+           SHARE
+        ====================================================== */
+
+        .share-box {
+
+            margin-top: 20px;
+
+            padding:
+                14px;
+
+            border-radius: 15px;
+
+            background:
+                #faf7ff;
+
+            font-size: 13px;
+
+            word-break: break-all;
+
+            color: #756b7b;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        footer {
+
+            text-align: center;
+
+            padding:
+                25px 20px 80px;
+
+            color: #817487;
+
+            font-size: 13px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =====================================================
+           CONFETTI
+        ====================================================== */
+
+        .confetti {
+
+            position: fixed;
+
+            top: -30px;
+
+            z-index: 999999;
+
+            pointer-events: none;
+
+            animation:
+                confettiFall linear forwards;
+        }
+
+
+        /* =====================================================
+           ANIMATIONS
+        ====================================================== */
+
+        @keyframes envelopeFloat {
+
+            0%, 100% {
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    translateY(-12px);
+            }
+        }
+
+
+        @keyframes floating {
+
+            0%, 100% {
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    translateY(-13px);
+            }
+        }
+
+
+        @keyframes bounce {
+
+            0%, 100% {
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    translateY(8px);
+            }
+        }
+
+
+        @keyframes heartBeat {
+
+            0%, 100% {
+                transform:
+                    scale(1);
+            }
+
+            50% {
+                transform:
+                    scale(1.25);
+            }
+        }
+
+
+        @keyframes spin {
+
+            from {
+                transform:
+                    rotate(0deg);
+            }
+
+            to {
+                transform:
+                    rotate(360deg);
+            }
+        }
+
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        @keyframes confettiFall {
+
+            to {
+
+                transform:
+                    translateY(110vh)
+                    rotate(720deg);
+
+                opacity: .9;
+            }
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ====================================================== */
+
+        @media (max-width: 650px) {
+
+            .hero {
+
+                min-height:
+                    90vh;
+
+                padding:
+                    35px 18px;
+            }
+
+
+            .hero-label {
+
+                letter-spacing:
+                    3px;
+
+                font-size:
+                    11px;
+            }
+
+
+            .hero h1 {
+
+                font-size:
+                    clamp(42px, 13vw, 65px);
+            }
+
+
+            .event-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .countdown {
+
+                gap: 6px;
+            }
+
+
+            .time-box {
+
+                min-width:
+                    64px;
+
+                padding:
+                    12px 5px;
+            }
+
+
+            .time-number {
+
+                font-size:
+                    23px;
+            }
+
+
+            .time-label {
+
+                font-size:
+                    8px;
+            }
+
+
+            .card {
+
+                padding:
+                    35px 20px;
+
+                border-radius:
+                    23px;
+            }
+
+
+            .card-text {
+
+                font-size:
+                    16px;
+            }
+
+
+            .music-player {
+
+                right: 12px;
+
+                bottom: 12px;
+            }
+
+
+            .music-text {
+
+                display:
+                    none;
+            }
+
+
+            .opening h1 {
+
+                font-size:
+                    27px;
+            }
+        }
+
+
+    </style>
 </head>
 
 
 <body>
 
 
-<!-- =========================
-     OPENING
-========================= -->
+<!-- =====================================================
+     OPENING SCREEN
+====================================================== -->
 
-<div class="opening" id="opening">
+<div
+    class="opening"
+    id="opening"
+>
 
-    <div class="envelope-container">
+    <div class="opening-content">
+
 
         <div class="envelope">
+
+            <div class="envelope-top"></div>
+
+            <div class="envelope-left"></div>
+
+            <div class="envelope-right"></div>
 
             <div class="seal">
                 🎓
@@ -629,42 +1343,102 @@ footer{
 
         </div>
 
-        <h1>Một lời mời đặc biệt 💌</h1>
+
+        <h1>
+            Một lời mời đặc biệt
+        </h1>
+
 
         <p>
-            Dành riêng cho bạn
+            Dành riêng cho bạn ❤️
         </p>
+
 
         <button
             class="open-button"
-            onclick="openInvitation()">
-
+            onclick="openInvitation()"
+        >
             Mở thiệp 🎓
-
         </button>
+
 
     </div>
 
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
+     MUSIC
+====================================================== -->
+
+<audio
+    id="music"
+    loop
+>
+
+    <source
+        src="music/graduation.mp3"
+        type="audio/mpeg"
+    >
+
+</audio>
+
+
+<!-- =====================================================
+     MUSIC PLAYER
+====================================================== -->
+
+<div
+    class="music-player"
+    id="musicPlayer"
+>
+
+    <button
+        class="music-button"
+        id="musicButton"
+        onclick="toggleMusic()"
+    >
+        ▶
+    </button>
+
+
+    <div
+        class="music-disc"
+        id="musicDisc"
+    ></div>
+
+
+    <div class="music-text">
+        Graduation Music
+    </div>
+
+</div>
+
+
+<!-- =====================================================
      HERO
-========================= -->
+====================================================== -->
 
 <section class="hero">
 
-    <div class="cap">
+
+    <div class="graduation-cap">
         🎓
     </div>
 
-    <div class="hero-small">
+
+    <div class="hero-label">
         GRADUATION CEREMONY · 2026
     </div>
+
 
     <h1>
         Lễ Tốt Nghiệp
     </h1>
+
+
+    <div class="divider"></div>
+
 
     <p class="hero-subtitle">
 
@@ -673,309 +1447,419 @@ footer{
         <br>
 
         <span
-            class="graduate-name"
-            id="heroGuest">
-
+            class="guest-name"
+            id="heroGuest"
+        >
             Bạn
-
         </span>
 
-        đến chung vui cùng mình ❤️
+        đến chung vui cùng mình
+
+        <span class="heart">
+            ❤️
+        </span>
 
     </p>
 
-    <div class="scroll">
-        Kéo xuống để mở thiệp
-        <span>↓</span>
+
+    <div class="scroll-hint">
+
+        Kéo xuống để xem thiệp
+
+        <span class="scroll-arrow">
+            ↓
+        </span>
+
     </div>
+
 
 </section>
 
 
-<div class="container">
+<!-- =====================================================
+     MAIN
+====================================================== -->
+
+<main class="container">
 
 
-<!-- =========================
-     INVITATION
-========================= -->
+    <!-- =================================================
+         INVITATION
+    ================================================== -->
 
-<section class="card">
-
-    <h2>
-        💌 Thân gửi
-    </h2>
-
-    <div
-        class="guest"
-        id="guestName">
-
-        Bạn thân mến
-
-    </div>
-
-    <p class="message">
-
-        Sau một hành trình dài với rất nhiều
-        kỷ niệm, thử thách và những ngày tháng
-        không thể quên...
-
-        <br><br>
-
-        Cuối cùng mình cũng đã đi đến
-        ngày đặc biệt này.
-
-        <br><br>
-
-        Mình rất vui nếu bạn có thể đến,
-        cùng mình đánh dấu khoảnh khắc
-        <strong>tốt nghiệp</strong>
-        và mở đầu cho một hành trình mới.
-
-        <br><br>
-
-        Sự có mặt của bạn sẽ khiến ngày này
-        trở nên đặc biệt hơn rất nhiều. ❤️
-
-    </p>
-
-</section>
+    <section class="card">
 
 
-<!-- =========================
-     GRADUATE
-========================= -->
-
-<section class="card">
-
-    <h2>
-        🎓 Người tốt nghiệp
-    </h2>
-
-    <div class="photo-frame">
-
-        <!-- THAY ẢNH CỦA BẠN -->
-        <img
-            src="images/avatar.jpg"
-            alt="Graduation">
-
-    </div>
-
-    <div class="person-name">
-        NGUYỄN VĂN A
-    </div>
-
-    <p style="margin-top:10px;">
-        Class of 2026
-    </p>
-
-</section>
+        <h2>
+            💌 Thân gửi
+        </h2>
 
 
-<!-- =========================
-     EVENT
-========================= -->
+        <div
+            class="guest-display"
+            id="guestName"
+        >
+            Bạn thân mến
+        </div>
 
-<section class="card">
 
-    <h2>
-        📅 Thông tin buổi lễ
-    </h2>
+        <p class="card-text">
 
-    <div class="event-grid">
+            Sau một hành trình dài với rất nhiều
+            kỷ niệm, thử thách và những ngày tháng
+            không thể nào quên...
 
-        <div class="event">
+            <br><br>
 
-            <div class="event-icon">
-                📅
-            </div>
+            Cuối cùng mình cũng đã đi đến
+            một trong những khoảnh khắc
+            đặc biệt nhất của tuổi trẻ:
+
+            <br>
 
             <strong>
-                Ngày
+                Ngày tốt nghiệp 🎓
             </strong>
 
-            <p>
-                20/09/2026
-            </p>
+            <br><br>
 
-        </div>
+            Mình rất vui nếu bạn có thể dành
+            chút thời gian đến tham dự và
+            cùng mình lưu giữ khoảnh khắc
+            đáng nhớ này.
 
-
-        <div class="event">
-
-            <div class="event-icon">
-                ⏰
-            </div>
+            <br><br>
 
             <strong>
-                Thời gian
+                Sự hiện diện của bạn chính là
+                món quà tuyệt vời nhất. ❤️
             </strong>
 
-            <p>
-                08:00 AM
-            </p>
+        </p>
+
+
+    </section>
+
+
+    <!-- =================================================
+         GRADUATE
+    ================================================== -->
+
+    <section class="card">
+
+
+        <h2>
+            🎓 Người tốt nghiệp
+        </h2>
+
+
+        <div class="photo-frame">
+
+            <img
+                src="images/avatar.jpg"
+                alt="Ảnh tốt nghiệp"
+            >
 
         </div>
 
 
-        <div class="event">
-
-            <div class="event-icon">
-                📍
-            </div>
-
-            <strong>
-                Địa điểm
-            </strong>
-
-            <p>
-                VinUniversity
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <a
-        href="https://maps.google.com/?q=VinUniversity"
-        target="_blank"
-        class="button">
-
-        📍 Mở Google Maps
-
-    </a>
-
-</section>
-
-
-<!-- =========================
-     COUNTDOWN
-========================= -->
-
-<section class="card">
-
-    <h2>
-        ⏳ Đếm ngược
-    </h2>
-
-    <p>
-        Đến ngày chúng ta cùng gặp nhau
-    </p>
-
-
-    <div class="countdown">
-
-        <div class="time">
-
-            <div
-                class="time-number"
-                id="days">
-                00
-            </div>
-
-            <div class="time-label">
-                NGÀY
-            </div>
-
+        <div class="graduate-name">
+            NGUYỄN VĂN A
         </div>
 
 
-        <div class="time">
-
-            <div
-                class="time-number"
-                id="hours">
-                00
-            </div>
-
-            <div class="time-label">
-                GIỜ
-            </div>
-
+        <div class="class-year">
+            Class of 2026
         </div>
 
 
-        <div class="time">
+    </section>
 
-            <div
-                class="time-number"
-                id="minutes">
-                00
+
+    <!-- =================================================
+         EVENT
+    ================================================== -->
+
+    <section class="card">
+
+
+        <h2>
+            📅 Thông tin buổi lễ
+        </h2>
+
+
+        <div class="event-grid">
+
+
+            <div class="event-item">
+
+                <div class="event-icon">
+                    📅
+                </div>
+
+                <strong>
+                    Ngày
+                </strong>
+
+                <p>
+                    20/09/2026
+                </p>
+
             </div>
 
-            <div class="time-label">
-                PHÚT
+
+            <div class="event-item">
+
+                <div class="event-icon">
+                    ⏰
+                </div>
+
+                <strong>
+                    Thời gian
+                </strong>
+
+                <p>
+                    08:00 AM
+                </p>
+
             </div>
+
+
+            <div class="event-item">
+
+                <div class="event-icon">
+                    📍
+                </div>
+
+                <strong>
+                    Địa điểm
+                </strong>
+
+                <p>
+                    VinUniversity
+                </p>
+
+            </div>
+
 
         </div>
 
 
-        <div class="time">
+        <a
+            class="button"
+            href="https://maps.google.com/?q=VinUniversity"
+            target="_blank"
+            rel="noopener"
+        >
 
-            <div
-                class="time-number"
-                id="seconds">
-                00
+            📍
+
+            Mở Google Maps
+
+        </a>
+
+
+    </section>
+
+
+    <!-- =================================================
+         COUNTDOWN
+    ================================================== -->
+
+    <section class="card">
+
+
+        <h2>
+            ⏳ Đếm ngược đến ngày đặc biệt
+        </h2>
+
+
+        <p class="card-text">
+
+            Chúng ta sắp gặp nhau rồi!
+
+        </p>
+
+
+        <div class="countdown">
+
+
+            <div class="time-box">
+
+                <div
+                    class="time-number"
+                    id="days"
+                >
+                    00
+                </div>
+
+                <div class="time-label">
+                    NGÀY
+                </div>
+
             </div>
 
-            <div class="time-label">
-                GIÂY
+
+            <div class="time-box">
+
+                <div
+                    class="time-number"
+                    id="hours"
+                >
+                    00
+                </div>
+
+                <div class="time-label">
+                    GIỜ
+                </div>
+
             </div>
+
+
+            <div class="time-box">
+
+                <div
+                    class="time-number"
+                    id="minutes"
+                >
+                    00
+                </div>
+
+                <div class="time-label">
+                    PHÚT
+                </div>
+
+            </div>
+
+
+            <div class="time-box">
+
+                <div
+                    class="time-number"
+                    id="seconds"
+                >
+                    00
+                </div>
+
+                <div class="time-label">
+                    GIÂY
+                </div>
+
+            </div>
+
 
         </div>
 
-    </div>
 
-</section>
-
-
-<!-- =========================
-     CONFIRM
-========================= -->
-
-<section class="card">
-
-    <h2>
-        ❤️ Bạn sẽ đến chứ?
-    </h2>
-
-    <p>
-        Mình rất mong được gặp bạn
-        trong ngày đặc biệt này.
-    </p>
+    </section>
 
 
-    <button
-        class="button"
-        onclick="confirmAttendance()">
+    <!-- =================================================
+         RSVP
+    ================================================== -->
 
-        🎉 Mình sẽ tham dự
-
-    </button>
+    <section class="card">
 
 
-    <div
-        id="thanks"
-        style="
-        display:none;
-        margin-top:20px;
-        color:#a75b91;
-        font-weight:bold;
-        ">
-
-        Tuyệt vời! Hẹn gặp bạn tại lễ tốt nghiệp nhé! ❤️🎓
-
-    </div>
-
-</section>
+        <h2>
+            ❤️ Bạn sẽ đến chứ?
+        </h2>
 
 
-</div>
+        <p class="card-text">
 
+            Mình rất mong được gặp bạn
+            trong ngày đặc biệt này.
+
+        </p>
+
+
+        <button
+            class="button"
+            onclick="confirmAttendance()"
+        >
+
+            🎉
+
+            Mình sẽ tham dự
+
+        </button>
+
+
+        <div
+            class="thanks"
+            id="thanks"
+        >
+
+            🎉 Tuyệt vời!
+
+            <br>
+
+            Hẹn gặp bạn tại lễ tốt nghiệp nhé! ❤️🎓
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =================================================
+         SHARE
+    ================================================== -->
+
+    <section class="card">
+
+
+        <h2>
+            🔗 Link thiệp của bạn
+        </h2>
+
+
+        <p class="card-text">
+
+            Bạn có thể gửi link này cho người khác.
+
+        </p>
+
+
+        <div
+            class="share-box"
+            id="shareLink"
+        >
+            Đang tạo link...
+        </div>
+
+
+        <button
+            class="button"
+            onclick="copyLink()"
+        >
+
+            📋
+
+            Sao chép link
+
+        </button>
+
+
+    </section>
+
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
 
 <footer>
 
     🎓 Graduation Day 2026
+
+    <br>
+
+    Một chương khép lại,
+    một hành trình mới bắt đầu.
 
     <br><br>
 
@@ -984,104 +1868,235 @@ footer{
 </footer>
 
 
-<!-- =========================
-     MUSIC
-========================= -->
-
-<audio
-    id="music"
-    loop>
-
-    <!--
-    Đặt file nhạc vào:
-
-    music/graduation.mp3
-    -->
-
-    <source
-        src="music/graduation.mp3"
-        type="audio/mpeg">
-
-</audio>
-
-
 <script>
 
-/* ==================================
-   ĐỌC TÊN TỪ URL
-================================== */
+/* =====================================================
+   LẤY TÊN TỪ URL
+===================================================== */
 
 const params =
     new URLSearchParams(
         window.location.search
     );
 
+
 let guest =
     params.get("name");
 
 
 /*
-    Nếu link:
+    Nếu link là:
 
     ?name=Minh
 
-    thì guest = Minh
+    thì website sẽ hiển thị:
+
+    Minh
 */
 
 
-if(guest){
+if (guest) {
 
-    guest =
-        decodeURIComponent(guest);
+    try {
 
-    document.getElementById(
-        "guestName"
-    ).innerText =
+        guest =
+            decodeURIComponent(guest);
+
+    } catch (error) {
+
+        console.log(
+            "Không thể decode tên."
+        );
+
+    }
+
+
+    document
+        .getElementById("guestName")
+        .innerText =
         guest;
 
-    document.getElementById(
-        "heroGuest"
-    ).innerText =
+
+    document
+        .getElementById("heroGuest")
+        .innerText =
         guest;
 
 }
 
 
-/* ==================================
-   MỞ THIỆP
-================================== */
+/* =====================================================
+   LINK CHIA SẺ
+===================================================== */
 
-function openInvitation(){
+function updateShareLink() {
+
+    const currentUrl =
+        window.location.href;
+
 
     document
-        .getElementById("opening")
-        .classList.add("hide");
+        .getElementById("shareLink")
+        .innerText =
+        currentUrl;
+
+}
 
 
-    /* phát nhạc */
+updateShareLink();
 
-    const music =
-        document.getElementById("music");
 
-    music.volume = 0.35;
+/* =====================================================
+   MỞ THIỆP
+===================================================== */
 
-    music.play().catch(
-        () => {}
-    );
+function openInvitation() {
 
+    const opening =
+        document
+            .getElementById("opening");
+
+
+    opening.classList.add("hide");
+
+
+    /* Bắt đầu nhạc */
+
+    startMusic();
+
+
+    /* Hiệu ứng */
 
     createConfetti();
 
+
+    /* Cuộn nhẹ */
+
+    setTimeout(() => {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }, 300);
+
 }
 
 
-/* ==================================
+/* =====================================================
+   MUSIC
+===================================================== */
+
+const music =
+    document.getElementById("music");
+
+
+const musicButton =
+    document.getElementById("musicButton");
+
+
+const musicDisc =
+    document.getElementById("musicDisc");
+
+
+let musicPlaying = false;
+
+
+function startMusic() {
+
+    music.volume = 0.35;
+
+
+    music.play()
+        .then(() => {
+
+            musicPlaying = true;
+
+            musicButton.innerText =
+                "❚❚";
+
+            musicDisc.classList.add(
+                "playing"
+            );
+
+        })
+        .catch(() => {
+
+            /*
+                Một số trình duyệt
+                có thể chặn autoplay.
+
+                Người dùng có thể bấm
+                nút nhạc ở góc màn hình.
+            */
+
+            musicPlaying = false;
+
+        });
+
+}
+
+
+function toggleMusic() {
+
+    if (musicPlaying) {
+
+        music.pause();
+
+        musicPlaying = false;
+
+        musicButton.innerText =
+            "▶";
+
+        musicDisc.classList.remove(
+            "playing"
+        );
+
+    } else {
+
+        music.volume = 0.35;
+
+        music.play()
+            .then(() => {
+
+                musicPlaying = true;
+
+                musicButton.innerText =
+                    "❚❚";
+
+                musicDisc.classList.add(
+                    "playing"
+                );
+
+            })
+            .catch(() => {
+
+                alert(
+                    "Không tìm thấy file nhạc. Hãy kiểm tra music/graduation.mp3"
+                );
+
+            });
+
+    }
+
+}
+
+
+/* =====================================================
    COUNTDOWN
-================================== */
+===================================================== */
 
 
 /*
-   SỬA NGÀY TỐT NGHIỆP Ở ĐÂY
+    =================================================
+    SỬA NGÀY / GIỜ TỐT NGHIỆP Ở ĐÂY
+    =================================================
+
+    Ví dụ:
+
+    September 20, 2026 08:00:00
+
 */
 
 const graduationDate =
@@ -1090,7 +2105,7 @@ const graduationDate =
     ).getTime();
 
 
-function updateCountdown(){
+function updateCountdown() {
 
     const now =
         new Date().getTime();
@@ -1100,82 +2115,95 @@ function updateCountdown(){
         graduationDate - now;
 
 
-    if(distance <= 0){
+    if (distance <= 0) {
 
-        document.getElementById(
-            "days"
-        ).innerText="00";
+        document
+            .getElementById("days")
+            .innerText = "00";
 
-        document.getElementById(
-            "hours"
-        ).innerText="00";
 
-        document.getElementById(
-            "minutes"
-        ).innerText="00";
+        document
+            .getElementById("hours")
+            .innerText = "00";
 
-        document.getElementById(
-            "seconds"
-        ).innerText="00";
+
+        document
+            .getElementById("minutes")
+            .innerText = "00";
+
+
+        document
+            .getElementById("seconds")
+            .innerText = "00";
+
 
         return;
-
     }
 
 
     const days =
         Math.floor(
             distance /
-            (1000*60*60*24)
+            (1000 * 60 * 60 * 24)
         );
 
 
     const hours =
         Math.floor(
-            (distance %
-            (1000*60*60*24)) /
-            (1000*60*60)
+            (
+                distance %
+                (1000 * 60 * 60 * 24)
+            ) /
+            (1000 * 60 * 60)
         );
 
 
     const minutes =
         Math.floor(
-            (distance %
-            (1000*60*60)) /
-            (1000*60)
+            (
+                distance %
+                (1000 * 60 * 60)
+            ) /
+            (1000 * 60)
         );
 
 
     const seconds =
         Math.floor(
-            (distance %
-            (1000*60)) /
+            (
+                distance %
+                (1000 * 60)
+            ) /
             1000
         );
 
 
-    document.getElementById(
-        "days"
-    ).innerText =
-        String(days).padStart(2,"0");
+    document
+        .getElementById("days")
+        .innerText =
+        String(days)
+            .padStart(2, "0");
 
 
-    document.getElementById(
-        "hours"
-    ).innerText =
-        String(hours).padStart(2,"0");
+    document
+        .getElementById("hours")
+        .innerText =
+        String(hours)
+            .padStart(2, "0");
 
 
-    document.getElementById(
-        "minutes"
-    ).innerText =
-        String(minutes).padStart(2,"0");
+    document
+        .getElementById("minutes")
+        .innerText =
+        String(minutes)
+            .padStart(2, "0");
 
 
-    document.getElementById(
-        "seconds"
-    ).innerText =
-        String(seconds).padStart(2,"0");
+    document
+        .getElementById("seconds")
+        .innerText =
+        String(seconds)
+            .padStart(2, "0");
 
 }
 
@@ -1185,46 +2213,136 @@ setInterval(
     1000
 );
 
+
 updateCountdown();
 
 
-/* ==================================
-   CONFIRM
-================================== */
+/* =====================================================
+   XÁC NHẬN THAM DỰ
+===================================================== */
 
-function confirmAttendance(){
+function confirmAttendance() {
 
-    document.getElementById(
-        "thanks"
-    ).style.display =
-        "block";
+    const thanks =
+        document
+            .getElementById("thanks");
+
+
+    thanks.classList.add(
+        "show"
+    );
+
 
     createConfetti();
+
+
+    /*
+        Lưu trạng thái trên
+        trình duyệt của người dùng.
+    */
+
+    localStorage.setItem(
+        "graduationAttendance",
+        "yes"
+    );
 
 }
 
 
-/* ==================================
-   CONFETTI
-================================== */
+/* =====================================================
+   KIỂM TRA RSVP ĐÃ BẤM CHƯA
+===================================================== */
 
-function createConfetti(){
+if (
+    localStorage.getItem(
+        "graduationAttendance"
+    ) === "yes"
+) {
+
+    document
+        .getElementById("thanks")
+        .classList.add("show");
+
+}
+
+
+/* =====================================================
+   COPY LINK
+===================================================== */
+
+async function copyLink() {
+
+    const link =
+        window.location.href;
+
+
+    try {
+
+        await navigator.clipboard.writeText(
+            link
+        );
+
+
+        alert(
+            "Đã sao chép link thiệp! 🎓"
+        );
+
+    } catch (error) {
+
+        /*
+            Fallback cho trình duyệt
+            không hỗ trợ clipboard.
+        */
+
+        const temp =
+            document.createElement("textarea");
+
+
+        temp.value = link;
+
+        document.body.appendChild(temp);
+
+        temp.select();
+
+        document.execCommand("copy");
+
+        temp.remove();
+
+
+        alert(
+            "Đã sao chép link thiệp! 🎓"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   CONFETTI
+===================================================== */
+
+function createConfetti() {
 
     const emojis = [
+
         "🎓",
         "🎉",
         "✨",
         "💜",
         "🌸",
-        "⭐"
+        "⭐",
+        "🎊",
+        "❤️"
+
     ];
 
 
-    for(
-        let i=0;
-        i<35;
+    for (
+        let i = 0;
+        i < 40;
         i++
-    ){
+    ) {
 
         const element =
             document.createElement("div");
@@ -1245,35 +2363,92 @@ function createConfetti(){
 
 
         element.style.left =
-            Math.random()*100 +
+            Math.random() *
+            100 +
             "vw";
 
 
         element.style.fontSize =
-            (Math.random()*15+15)
-            + "px";
+            (
+                Math.random() *
+                15 +
+                14
+            ) +
+            "px";
 
 
         element.style.animationDuration =
-            (Math.random()*3+3)
-            + "s";
+            (
+                Math.random() *
+                3 +
+                3
+            ) +
+            "s";
 
 
-        document.body.appendChild(
-            element
-        );
+        element.style.animationDelay =
+            (
+                Math.random() *
+                .8
+            ) +
+            "s";
+
+
+        document
+            .body
+            .appendChild(element);
 
 
         setTimeout(
-            ()=>{
+            () => {
+
                 element.remove();
+
             },
-            6500
+            7000
         );
 
     }
 
 }
+
+
+/* =====================================================
+   CLICK MUSIC PLAYER
+===================================================== */
+
+music.addEventListener(
+    "play",
+    () => {
+
+        musicPlaying = true;
+
+        musicButton.innerText =
+            "❚❚";
+
+        musicDisc.classList.add(
+            "playing"
+        );
+
+    }
+);
+
+
+music.addEventListener(
+    "pause",
+    () => {
+
+        musicPlaying = false;
+
+        musicButton.innerText =
+            "▶";
+
+        musicDisc.classList.remove(
+            "playing"
+        );
+
+    }
+);
 
 </script>
 
