@@ -78,24 +78,32 @@ body:before{
 }
 .hero{
   min-height:100vh;display:grid;place-items:center;text-align:center;
-  padding:70px 20px 40px;position:relative;
+  padding:105px 20px 70px;position:relative;
 }
-.hero-inner{max-width:1000px}
-.cap{font-size:78px;filter:drop-shadow(0 12px 15px rgba(70,40,90,.16));animation:float 3.5s ease-in-out infinite}
+.hero-inner{max-width:1000px;position:relative;z-index:2}
+.hero:before{
+  content:"";position:absolute;width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle,rgba(188,130,174,.12),transparent 68%);
+  top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;
+}
+.cap{font-size:64px;filter:drop-shadow(0 12px 15px rgba(70,40,90,.16));animation:float 3.5s ease-in-out infinite}
 .kicker{
-  margin-top:20px;letter-spacing:6px;font-size:12px;font-weight:600;color:#80608e
+  margin-top:24px;letter-spacing:7px;font-size:11px;font-weight:600;color:#8a6a95
 }
 .hero h1{
-  margin:18px 0 22px;
-  font:800 clamp(48px,10vw,94px)/1.03 "Playfair Display",serif;
-  background:linear-gradient(90deg,#51336f,#87549b,#bd6d96);
+  margin:30px 0 25px;
+  font:700 clamp(43px,7.8vw,78px)/1.08 "Playfair Display",serif;
+  letter-spacing:.02em;
+  background:linear-gradient(105deg,#4b2d68 5%,#79508f 48%,#b76d93 92%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 10px 35px rgba(91,57,123,.10);
 }
-.ornament{display:flex;align-items:center;gap:13px;justify-content:center;color:var(--gold)}
-.ornament span{width:70px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
-.subtitle{font-size:18px;line-height:1.9;margin-top:22px}
+.ornament{display:flex;align-items:center;gap:14px;justify-content:center;color:var(--gold);font-size:11px}
+.ornament span{width:92px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.ornament:after{content:"";position:absolute}
+.subtitle{font-size:16px;line-height:1.85;margin-top:22px;color:#403747}
 .guest{color:#a95783;font-weight:700}
-.scroll{margin-top:70px;color:var(--muted);font-size:12px;letter-spacing:2px}
+.scroll{margin-top:82px;color:#8b7d8f;font-size:10px;letter-spacing:2.5px}
 .scroll b{display:block;font-size:24px;margin-top:7px;animation:bounce 1.5s infinite}
 .container{width:min(920px,92%);margin:auto}
 .card{
@@ -167,7 +175,8 @@ footer{text-align:center;padding:35px 20px 90px;color:#817583;font-size:13px;lin
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:.2}}
 @media(max-width:650px){
-  .hero{padding-top:45px}.cap{font-size:64px}.kicker{letter-spacing:3px}
+  .hero{padding-top:65px}.cap{font-size:54px}.kicker{letter-spacing:3px}
+  .hero h1{margin-top:24px}
   .hero h1{font-size:clamp(45px,14vw,68px)}.subtitle{font-size:16px}
   .card{padding:38px 20px}.event-grid{grid-template-columns:1fr}
   .time{min-width:70px}.time b{font-size:24px}.music small{display:none}
@@ -282,14 +291,6 @@ footer{text-align:center;padding:35px 20px 90px;color:#817583;font-size:13px;lin
       Tuyệt vời! Hẹn gặp bạn tại lễ tốt nghiệp nhé! ❤️🎓
     </div>
   </section>
-
-  <section class="card share">
-    <h2>Thiệp dành riêng cho bạn</h2>
-    <p>Mỗi khách mời có một đường dẫn riêng, ví dụ <strong>/anh-minh</strong> hoặc <strong>/chi-lan</strong>.</p>
-    <div class="share-url" id="shareUrl"></div>
-    <button onclick="copyLink()">📋 Sao chép link</button>
-  </section>
-
 </main>
 
 <footer>
@@ -352,9 +353,6 @@ if (
 
 document.getElementById("heroGuest").textContent = guest;
 document.getElementById("guestName").textContent = guest;
-
-document.getElementById("shareUrl").textContent = location.href;
-
 const music = document.getElementById("music");
 const musicBtn = document.getElementById("musicBtn");
 const disc = document.getElementById("disc");
@@ -414,22 +412,6 @@ function confirmAttendance(){
 if(localStorage.getItem("graduation-rsvp")==="yes"){
   document.getElementById("thanks").classList.add("show");
 }
-
-async function copyLink(){
-  try{
-    await navigator.clipboard.writeText(location.href);
-    alert("Đã sao chép link thiệp! 🎓");
-  }catch(e){
-    const t=document.createElement("textarea");
-    t.value=location.href;
-    document.body.appendChild(t);
-    t.select();
-    document.execCommand("copy");
-    t.remove();
-    alert("Đã sao chép link thiệp! 🎓");
-  }
-}
-
 function petals(count){
   const symbols=["🌸","✨","✦","🎓","🤍"];
   for(let i=0;i<count;i++){
