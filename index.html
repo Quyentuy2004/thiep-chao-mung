@@ -304,55 +304,68 @@ footer{text-align:center;padding:35px 20px 90px;color:#817583;font-size:13px;lin
 <script>
 // ================================
 // PERSONALIZED GUEST PATH
-// /anh-minh  -> Anh Minh
-// /chi-lan   -> Chị Lan
-// /ban-nam   -> Bạn Nam
-// /co-huong  -> Cô Hương
-// /chu-hung  -> Chú Hùng
-// /em-mai    -> Em Mai
+// /toan              -> Toàn
+// /minh              -> Minh
+// /thuong            -> Thương
+// /toan-minh-thuong  -> Toàn + Minh + Thương
+//
+// Có thể dùng URL không dấu để dễ gửi.
+// Code cũng nhận URL có dấu và luôn hiển thị đúng tiếng Việt.
 // ================================
 
-const cleanPath = window.location.pathname
-  .replace(/^\/+|\/+$/g, "");
+function normalizeSlug(value) {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d")
+    .replace(/Đ/g, "D")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
 
-const pronouns = {
-  anh: "Anh",
-  chi: "Chị",
-  ban: "Bạn",
-  co: "Cô",
-  chu: "Chú",
-  em: "Em"
+const guestMap = {
+  "kim-ngan": "Kim Ngân",
+  "bo-con": "Bố con",
+  "vy-vy": "Vy Vy",
+  "bo-me": "Bố Mẹ",
+  "ha-vi": "Hà Vi",
+  "cac-ban": "Các Bạn",
+  "nhi": "Nhi",
+  "nhat": "Nhật",
+  "toan": "Toàn",
+  "minh": "Minh",
+  "thuong": "Thương"
 };
 
-function titleCaseVietnamese(text) {
-  return text
-    .split("-")
-    .filter(Boolean)
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    .join(" ");
-}
+let rawPath = window.location.pathname;
+
+try {
+  rawPath = decodeURIComponent(rawPath);
+} catch (e) {}
+
+const cleanPath = rawPath
+  .replace(/^\/+|\/+$/g, "")
+  .replace(/\/+/g, "/");
 
 let guest = "Bạn thân mến";
 
-// Only interpret the path as a guest name when it has the format
-// /anh-name, /chi-name, /ban-name, etc.
 if (
   cleanPath &&
   cleanPath !== "index.html" &&
   !cleanPath.includes(".") &&
   !cleanPath.includes("/")
 ) {
-  const parts = cleanPath.split("-");
-  const type = parts.shift().toLowerCase();
-  const name = titleCaseVietnamese(parts.join("-"));
+  const slug = normalizeSlug(cleanPath);
 
-  if (pronouns[type] && name) {
-    guest = `${pronouns[type]} ${name}`;
+  if (guestMap[slug]) {
+    guest = guestMap[slug];
   }
 }
 
 document.getElementById("heroGuest").textContent = guest;
 document.getElementById("guestName").textContent = guest;
+
 const music = document.getElementById("music");
 const musicBtn = document.getElementById("musicBtn");
 const disc = document.getElementById("disc");
